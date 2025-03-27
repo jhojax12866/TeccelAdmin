@@ -9,7 +9,7 @@ export default function Navigation() {
   const items: NavigationItem[] = [
     { title: "INICIO", href: "/" },
     { title: "PRODUCTOS", href: "/productos" },
-    { title: "NOSOTROS", href: "/nosotros" },
+    { title: "NOSOTROS", href: "/nosotros1" },
     { title: "CONTACTO", href: "/contacto" },
   ]
 
