@@ -5,6 +5,7 @@ import "./globals.css"
 import Header from "@/components/header"
 import { ThemeProvider } from "next-themes"
 import AboutUs from "@/app/nosotros/page"
+import Footer from "@/components/footer"
 
 
 const inter = Inter({ subsets: ["latin"] })
@@ -24,10 +25,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <Header />
-          
           <main>{children}</main>
-          
-
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

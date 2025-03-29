@@ -1,12 +1,17 @@
-import AboutUs from "@/components/about-us"
 import Hero from "@/components/hero"
-import ContactSection from "@/components/contact-section"
+import ProductsSection from "@/components/product-section"
+import StoreLocation from "@/components/store-location"
+
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Hero />
-      <ContactSection />
+
+      <ProductsSection />
+
+      <StoreLocation />
+
       {/* Features Section */}
       <section className="px-4 py-16 bg-muted/50">
         <div className="container mx-auto max-w-6xl">
@@ -16,4 +21,6 @@ export default function Home() {
     </div>
   )
 }
+
+
 
