@@ -39,22 +39,22 @@ export default function Footer() {
             </p>
             <div className="flex space-x-3 mt-3">
               <Link
-                href="#"
+                href="https://www.facebook.com/teccelmocoap/"
                 className="w-6 h-6 rounded-full bg-gray-100 hover:bg-[#e41e26] hover:text-white text-[#e41e26] flex items-center justify-center transition-colors duration-300"
               >
                 <Facebook size={14} />
               </Link>
               <Link
-                href="#"
+                href="https://www.instagram.com/teccelmocoa/"
                 className="w-6 h-6 rounded-full bg-gray-100 hover:bg-[#e41e26] hover:text-white text-[#e41e26] flex items-center justify-center transition-colors duration-300"
               >
                 <Instagram size={14} />
               </Link>
               <Link
-                href="#"
+                href="https://www.facebook.com/teccelmocoap/"
                 className="w-6 h-6 rounded-full bg-gray-100 hover:bg-[#e41e26] hover:text-white text-[#e41e26] flex items-center justify-center transition-colors duration-300"
               >
-                <Twitter size={14} />
+                <Facebook size={14} />
               </Link>
             </div>
           </div>
@@ -63,15 +63,15 @@ export default function Footer() {
           <div className="flex flex-col space-y-1 items-center md:items-start">
             <div className="flex items-center">
               <MapPin className="w-4 h-4 text-[#e41e26] mr-2" />
-              <p className="text-gray-600 text-xs">Calle 7 #4-23, Centro Comercial Mocoa Plaza, Local 112</p>
+              <p className="text-gray-600 text-xs"> Cra 7 # 8 - 25 Teccel Mocoa Barrio Centro Mocoa Putumayo</p>
             </div>
             <div className="flex items-center">
               <Phone className="w-4 h-4 text-[#e41e26] mr-2" />
-              <p className="text-gray-600 text-xs">+57 311 234 5678</p>
+              <p className="text-gray-600 text-xs">+57 314 489 0686</p>
             </div>
             <div className="flex items-center">
               <Mail className="w-4 h-4 text-[#e41e26] mr-2" />
-              <p className="text-gray-600 text-xs">info@teccelmocoa.com</p>
+              <p className="text-gray-600 text-xs">teccelmocoa@gmail.com</p>
             </div>
           </div>
 
