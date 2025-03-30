@@ -43,7 +43,7 @@ export default function StoreLocation() {
           >
             <div className="aspect-video relative">
               <Image
-                src="/placeholder.svg?height=400&width=600&text=Tienda+TECCEL+MOCOA"
+                src="/teccel2.jpg"
                 alt="Tienda TECCEL MOCOA"
                 fill
                 className="object-cover rounded-lg"
