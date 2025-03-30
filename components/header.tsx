@@ -15,7 +15,7 @@ export default function Header() {
             <Search className="h-5 w-5 text-[#e41e26]" />
           </Button>
           <Link href="/login" className="text-sm font-medium text-gray-700 hover:text-[#e41e26] transition-colors">
-            LOGIN
+            LOGIN.
           </Link>
           <Button variant="ghost" size="icon" aria-label="Cart" className="relative">
             <ShoppingCart className="h-5 w-5 text-[#e41e26]" />
