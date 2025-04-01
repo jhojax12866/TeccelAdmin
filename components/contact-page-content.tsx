@@ -69,7 +69,7 @@ export default function ContactPageContent() {
                       <Phone className="h-5 w-5 text-[#e41e26] mt-0.5" />
                       <div>
                         <p className="font-medium">Teléfono</p>
-                        <p className="text-sm text-gray-600">+57 314 489 0686</p>
+                        <p className="text-sm text-gray-600">+57 322 900 4323</p>
                       </div>
                     </div>
 

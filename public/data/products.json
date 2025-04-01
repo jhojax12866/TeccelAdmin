@@ -5,7 +5,7 @@
       "model": "Redmi Note 14",
       "storage": "256GB",
       "price": 899900,
-      "image": "/placeholder.svg?height=300&width=300&text=Redmi+Note+14",
+      "image": "/xiaomi/note14.png",
       "featured": true
     },
     {
@@ -14,7 +14,7 @@
       "model": "Redmi 14C",
       "storage": "256GB",
       "price": 799900,
-      "image": "/placeholder.svg?height=300&width=300&text=Redmi+14C",
+      "image": "/xiaomi/redmi14c.png",
       "featured": false
     },
     {
@@ -23,7 +23,7 @@
       "model": "Redmi 14C",
       "storage": "128GB",
       "price": 699900,
-      "image": "/placeholder.svg?height=300&width=300&text=Redmi+14C",
+      "image": "/xiaomi/redmi14c.png",
       "featured": false
     },
     {
@@ -32,7 +32,7 @@
       "model": "Redmi 14",
       "storage": "256GB",
       "price": 849900,
-      "image": "/placeholder.svg?height=300&width=300&text=Redmi+14",
+      "image": "/xiaomi/note141.png",
       "featured": true
     },
     {
@@ -41,7 +41,7 @@
       "model": "Redmi 13",
       "storage": "256GB",
       "price": 749900,
-      "image": "/placeholder.svg?height=300&width=300&text=Redmi+13",
+      "image": "/xiaomi/redmi13.png",
       "featured": false
     },
     {
@@ -50,7 +50,7 @@
       "model": "Redmi Note 14 Pro",
       "storage": "256GB",
       "price": 1099900,
-      "image": "/placeholder.svg?height=300&width=300&text=Redmi+Note+14+Pro",
+      "image": "/xiaomi/redmi14pro.png",
       "featured": true
     },
     {
@@ -59,7 +59,7 @@
       "model": "Redmi A3X",
       "storage": "128GB",
       "price": 599900,
-      "image": "/placeholder.svg?height=300&width=300&text=Redmi+A3X",
+      "image": "/xiaomi/a3x.png",
       "featured": false
     },
     {
@@ -68,7 +68,7 @@
       "model": "Galaxy A35",
       "storage": "256GB",
       "price": 1299900,
-      "image": "/placeholder.svg?height=300&width=300&text=Samsung+A35",
+      "image": "/samsung/a35.png",
       "featured": true
     },
     {
@@ -77,7 +77,7 @@
       "model": "Galaxy A16",
       "storage": "256GB",
       "price": 899900,
-      "image": "/placeholder.svg?height=300&width=300&text=Samsung+A16",
+      "image": "/samsung/a16.png",
       "featured": false
     },
     {
@@ -86,7 +86,7 @@
       "model": "Galaxy A05",
       "storage": "64GB",
       "price": 499900,
-      "image": "/placeholder.svg?height=300&width=300&text=Samsung+A05",
+      "image": "/samsung/a05.png",
       "featured": false
     },
     {
@@ -95,35 +95,8 @@
       "model": "Galaxy A06",
       "storage": "128GB",
       "price": 599900,
-      "image": "/placeholder.svg?height=300&width=300&text=Samsung+A06",
+      "image": "/samsung/a06.png",
       "featured": false
-    },
-    {
-      "id": "infinix-smart-9",
-      "brand": "Infinix",
-      "model": "Smart 9",
-      "storage": "128GB",
-      "price": 499900,
-      "image": "/placeholder.svg?height=300&width=300&text=Infinix+Smart+9",
-      "featured": false
-    },
-    {
-      "id": "infinix-hot-50i",
-      "brand": "Infinix",
-      "model": "Hot 50i",
-      "storage": "128GB",
-      "price": 549900,
-      "image": "/placeholder.svg?height=300&width=300&text=Infinix+Hot+50i",
-      "featured": false
-    },
-    {
-      "id": "infinix-hot-50-pro-256gb",
-      "brand": "Infinix",
-      "model": "Hot 50 Pro",
-      "storage": "256GB",
-      "price": 799900,
-      "image": "/placeholder.svg?height=300&width=300&text=Infinix+Hot+50+Pro",
-      "featured": true
     },
     {
       "id": "tecno-spark-go1-128gb",
@@ -131,7 +104,7 @@
       "model": "Spark Go 1",
       "storage": "128GB",
       "price": 449900,
-      "image": "/placeholder.svg?height=300&width=300&text=Tecno+Spark+Go1",
+      "image": "/tecno/g11.png",
       "featured": false
     },
     {
@@ -140,7 +113,7 @@
       "model": "Spark Go 1",
       "storage": "64GB",
       "price": 399900,
-      "image": "/placeholder.svg?height=300&width=300&text=Tecno+Spark+Go1",
+      "image": "/tecno/g1.png",
       "featured": false
     },
     {
@@ -149,7 +122,7 @@
       "model": "Spark 30C",
       "storage": "256GB",
       "price": 699900,
-      "image": "/placeholder.svg?height=300&width=300&text=Tecno+Spark+30C",
+      "image": "/tecno/spark30c.png",
       "featured": true
     },
     {
@@ -158,7 +131,7 @@
       "model": "Spark 30",
       "storage": "256GB",
       "price": 649900,
-      "image": "/placeholder.svg?height=300&width=300&text=Tecno+Spark+30",
+      "image": "/tecno/spark30normal.png",
       "featured": false
     },
     {
@@ -167,7 +140,7 @@
       "model": "Spark 30 Pro",
       "storage": "256GB",
       "price": 799900,
-      "image": "/placeholder.svg?height=300&width=300&text=Tecno+Spark+30+Pro",
+      "image": "/tecno/spark30pro.png",
       "featured": true
     },
     {
@@ -176,7 +149,7 @@
       "model": "A34",
       "storage": "64GB",
       "price": 399900,
-      "image": "/placeholder.svg?height=300&width=300&text=ZTE+A34",
+      "image": "/zte/v34.png",
       "featured": false
     },
     {
@@ -185,7 +158,7 @@
       "model": "V40",
       "storage": "128GB",
       "price": 599900,
-      "image": "/placeholder.svg?height=300&width=300&text=ZTE+V40",
+      "image": "/zte/v40.png",
       "featured": false
     },
     {
@@ -194,7 +167,7 @@
       "model": "V50 Vita",
       "storage": "256GB",
       "price": 899900,
-      "image": "/placeholder.svg?height=300&width=300&text=ZTE+V50+Vita",
+      "image": "/zte/v50vita.png",
       "featured": true
     }
   ]
