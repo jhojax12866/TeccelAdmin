@@ -78,10 +78,10 @@ export default function Footer() {
           {/* Quick links */}
           <div className="flex justify-center md:justify-end space-x-4 text-xs">
             <div className="space-y-1">
-              <Link href="#" className="block text-gray-600 hover:text-[#e41e26]">
+              <Link href="./" className="block text-gray-600 hover:text-[#e41e26]">
                 Inicio
               </Link>
-              <Link href="#" className="block text-gray-600 hover:text-[#e41e26]">
+              <Link href="./" className="block text-gray-600 hover:text-[#e41e26]">
                 Productos
               </Link>
               <Link href="#" className="block text-gray-600 hover:text-[#e41e26]">
@@ -89,10 +89,10 @@ export default function Footer() {
               </Link>
             </div>
             <div className="space-y-1">
-              <Link href="#" className="block text-gray-600 hover:text-[#e41e26]">
+              <Link href="./nosotros" className="block text-gray-600 hover:text-[#e41e26]">
                 Nosotros
               </Link>
-              <Link href="#" className="block text-gray-600 hover:text-[#e41e26]">
+              <Link href="./contacto" className="block text-gray-600 hover:text-[#e41e26]">
                 Contacto
               </Link>
               <Link href="#" className="block text-gray-600 hover:text-[#e41e26]">
