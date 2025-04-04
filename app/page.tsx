@@ -1,3 +1,4 @@
+import Collections from "@/components/collections"
 import Hero from "@/components/hero"
 import ProductsSection from "@/components/product-section"
 import StoreLocation from "@/components/store-location"
@@ -7,7 +8,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Hero />
-
+      <Collections />
+      
       <ProductsSection />
 
       <StoreLocation />
