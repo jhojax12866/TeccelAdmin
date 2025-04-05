@@ -39,10 +39,10 @@ export default function Footer() {
             </p>
             <div className="flex space-x-3 mt-3">
               <Link
-                href="https://www.facebook.com/teccelmocoap/"
+                href="https://www.facebook.com/TeccelMocoacelulares"
                 className="w-6 h-6 rounded-full bg-gray-100 hover:bg-[#e41e26] hover:text-white text-[#e41e26] flex items-center justify-center transition-colors duration-300"
               >
-                <Facebook size={14} />
+               
               </Link>
               <Link
                 href="https://www.instagram.com/teccelmocoa/"
@@ -51,7 +51,7 @@ export default function Footer() {
                 <Instagram size={14} />
               </Link>
               <Link
-                href="https://www.facebook.com/teccelmocoap/"
+                href="https://www.facebook.com/TeccelMocoacelulares"
                 className="w-6 h-6 rounded-full bg-gray-100 hover:bg-[#e41e26] hover:text-white text-[#e41e26] flex items-center justify-center transition-colors duration-300"
               >
                 <Facebook size={14} />

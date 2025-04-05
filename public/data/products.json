@@ -1,175 +1,174 @@
 [
-    {
-      "id": "xiaomi-redmi-note-14-256gb",
-      "brand": "Xiaomi",
-      "model": "Redmi Note 14",
-      "storage": "256GB",
-      "price": 899900,
-      "image": "/xiaomi/note14.png",
-      "featured": true
-    },
-    {
-      "id": "xiaomi-redmi-14c-256gb",
-      "brand": "Xiaomi",
-      "model": "Redmi 14C",
-      "storage": "256GB",
-      "price": 799900,
-      "image": "/xiaomi/redmi14c.png",
-      "featured": false
-    },
-    {
-      "id": "xiaomi-redmi-14c-128gb",
-      "brand": "Xiaomi",
-      "model": "Redmi 14C",
-      "storage": "128GB",
-      "price": 699900,
-      "image": "/xiaomi/redmi14c.png",
-      "featured": false
-    },
-    {
-      "id": "xiaomi-redmi-14-256gb",
-      "brand": "Xiaomi",
-      "model": "Redmi 14",
-      "storage": "256GB",
-      "price": 849900,
-      "image": "/xiaomi/note141.png",
-      "featured": true
-    },
-    {
-      "id": "xiaomi-redmi-13-256gb",
-      "brand": "Xiaomi",
-      "model": "Redmi 13",
-      "storage": "256GB",
-      "price": 749900,
-      "image": "/xiaomi/redmi13.png",
-      "featured": false
-    },
-    {
-      "id": "xiaomi-redmi-note-14-pro-256gb",
-      "brand": "Xiaomi",
-      "model": "Redmi Note 14 Pro",
-      "storage": "256GB",
-      "price": 1099900,
-      "image": "/xiaomi/redmi14pro.png",
-      "featured": true
-    },
-    {
-      "id": "xiaomi-redmi-a3x-128gb",
-      "brand": "Xiaomi",
-      "model": "Redmi A3X",
-      "storage": "128GB",
-      "price": 599900,
-      "image": "/xiaomi/a3x.png",
-      "featured": false
-    },
-    {
-      "id": "samsung-a35-256gb",
-      "brand": "Samsung",
-      "model": "Galaxy A35",
-      "storage": "256GB",
-      "price": 1299900,
-      "image": "/samsung/a35.png",
-      "featured": true
-    },
-    {
-      "id": "samsung-a16-256gb",
-      "brand": "Samsung",
-      "model": "Galaxy A16",
-      "storage": "256GB",
-      "price": 899900,
-      "image": "/samsung/a16.png",
-      "featured": false
-    },
-    {
-      "id": "samsung-a05-64gb",
-      "brand": "Samsung",
-      "model": "Galaxy A05",
-      "storage": "64GB",
-      "price": 499900,
-      "image": "/samsung/a05.png",
-      "featured": false
-    },
-    {
-      "id": "samsung-a06-128gb",
-      "brand": "Samsung",
-      "model": "Galaxy A06",
-      "storage": "128GB",
-      "price": 599900,
-      "image": "/samsung/a06.png",
-      "featured": false
-    },
-    {
-      "id": "tecno-spark-go1-128gb",
-      "brand": "Tecno",
-      "model": "Spark Go 1",
-      "storage": "128GB",
-      "price": 449900,
-      "image": "/tecno/g11.png",
-      "featured": false
-    },
-    {
-      "id": "tecno-spark-go1-64gb",
-      "brand": "Tecno",
-      "model": "Spark Go 1",
-      "storage": "64GB",
-      "price": 399900,
-      "image": "/tecno/g1.png",
-      "featured": false
-    },
-    {
-      "id": "tecno-spark-30c-256gb",
-      "brand": "Tecno",
-      "model": "Spark 30C",
-      "storage": "256GB",
-      "price": 699900,
-      "image": "/tecno/spark30c.png",
-      "featured": true
-    },
-    {
-      "id": "tecno-spark-30-256gb",
-      "brand": "Tecno",
-      "model": "Spark 30",
-      "storage": "256GB",
-      "price": 649900,
-      "image": "/tecno/spark30normal.png",
-      "featured": false
-    },
-    {
-      "id": "tecno-spark-30-pro",
-      "brand": "Tecno",
-      "model": "Spark 30 Pro",
-      "storage": "256GB",
-      "price": 799900,
-      "image": "/tecno/spark30pro.png",
-      "featured": true
-    },
-    {
-      "id": "zte-a34-64gb",
-      "brand": "ZTE",
-      "model": "A34",
-      "storage": "64GB",
-      "price": 399900,
-      "image": "/zte/v34.png",
-      "featured": false
-    },
-    {
-      "id": "zte-v40-128gb",
-      "brand": "ZTE",
-      "model": "V40",
-      "storage": "128GB",
-      "price": 599900,
-      "image": "/zte/v40.png",
-      "featured": false
-    },
-    {
-      "id": "zte-v50-vita-256gb",
-      "brand": "ZTE",
-      "model": "V50 Vita",
-      "storage": "256GB",
-      "price": 899900,
-      "image": "/zte/v50vita.png",
-      "featured": true
-    }
-  ]
-  
-  
+  {
+    "id": "xiaomi-redmi-note-14-256gb",
+    "brand": "Xiaomi",
+    "model": "Redmi Note 14",
+    "storage": "256GB",
+    "price": 899900,
+    "image": "/xiaomi/note14.png",
+    "featured": true
+  },
+  {
+    "id": "xiaomi-redmi-14c-256gb",
+    "brand": "Xiaomi",
+    "model": "Redmi 14C",
+    "storage": "256GB",
+    "price": 799900,
+    "image": "/xiaomi/redmi14c.png",
+    "featured": false
+  },
+  {
+    "id": "xiaomi-redmi-14c-128gb",
+    "brand": "Xiaomi",
+    "model": "Redmi 14C",
+    "storage": "128GB",
+    "price": 699900,
+    "image": "/xiaomi/redmi14c.png",
+    "featured": false
+  },
+  {
+    "id": "xiaomi-redmi-14-256gb",
+    "brand": "Xiaomi",
+    "model": "Redmi 14",
+    "storage": "256GB",
+    "price": 849900,
+    "image": "/xiaomi/note141.png",
+    "featured": true
+  },
+  {
+    "id": "xiaomi-redmi-13-256gb",
+    "brand": "Xiaomi",
+    "model": "Redmi 13",
+    "storage": "256GB",
+    "price": 749900,
+    "image": "/xiaomi/redmi13.png",
+    "featured": false
+  },
+  {
+    "id": "xiaomi-redmi-note-14-pro-256gb",
+    "brand": "Xiaomi",
+    "model": "Redmi Note 14 Pro",
+    "storage": "256GB",
+    "price": 1099900,
+    "image": "/xiaomi/redmi14pro.png",
+    "featured": true
+  },
+  {
+    "id": "xiaomi-redmi-a3x-128gb",
+    "brand": "Xiaomi",
+    "model": "Redmi A3X",
+    "storage": "128GB",
+    "price": 599900,
+    "image": "/xiaomi/a3x.png",
+    "featured": false
+  },
+  {
+    "id": "samsung-a35-256gb",
+    "brand": "Samsung",
+    "model": "Galaxy A35",
+    "storage": "256GB",
+    "price": 1299900,
+    "image": "/samsung/a35.png",
+    "featured": true
+  },
+  {
+    "id": "samsung-a16-256gb",
+    "brand": "Samsung",
+    "model": "Galaxy A16",
+    "storage": "256GB",
+    "price": 899900,
+    "image": "/samsung/a16.png",
+    "featured": false
+  },
+  {
+    "id": "samsung-a05-64gb",
+    "brand": "Samsung",
+    "model": "Galaxy A05",
+    "storage": "64GB",
+    "price": 499900,
+    "image": "/samsung/a05.png",
+    "featured": false
+  },
+  {
+    "id": "samsung-a06-128gb",
+    "brand": "Samsung",
+    "model": "Galaxy A06",
+    "storage": "128GB",
+    "price": 599900,
+    "image": "/samsung/a06.png",
+    "featured": false
+  },
+  {
+    "id": "tecno-spark-go1-128gb",
+    "brand": "Tecno",
+    "model": "Spark Go 1",
+    "storage": "128GB",
+    "price": 449900,
+    "image": "/tecno/g11.png",
+    "featured": false
+  },
+  {
+    "id": "tecno-spark-go1-64gb",
+    "brand": "Tecno",
+    "model": "Spark Go 1",
+    "storage": "64GB",
+    "price": 399900,
+    "image": "/tecno/g1.png",
+    "featured": false
+  },
+  {
+    "id": "tecno-spark-30c-256gb",
+    "brand": "Tecno",
+    "model": "Spark 30C",
+    "storage": "256GB",
+    "price": 699900,
+    "image": "/tecno/spark30c.png",
+    "featured": true
+  },
+  {
+    "id": "tecno-spark-30-256gb",
+    "brand": "Tecno",
+    "model": "Spark 30",
+    "storage": "256GB",
+    "price": 649900,
+    "image": "/tecno/spark30normal.png",
+    "featured": false
+  },
+  {
+    "id": "tecno-spark-30-pro",
+    "brand": "Tecno",
+    "model": "Spark 30 Pro",
+    "storage": "256GB",
+    "price": 799900,
+    "image": "/tecno/spark30pro.png",
+    "featured": true
+  },
+  {
+    "id": "zte-a34-64gb",
+    "brand": "ZTE",
+    "model": "A34",
+    "storage": "64GB",
+    "price": 399900,
+    "image": "/zte/v34.png",
+    "featured": false
+  },
+  {
+    "id": "zte-v40-128gb",
+    "brand": "ZTE",
+    "model": "V40",
+    "storage": "128GB",
+    "price": 599900,
+    "image": "/zte/v40.png",
+    "featured": false
+  },
+  {
+    "id": "zte-v50-vita-256gb",
+    "brand": "ZTE",
+    "model": "V50 Vita",
+    "storage": "256GB",
+    "price": 899900,
+    "image": "/zte/v50vita.png",
+    "featured": true
+  }
+]
+

@@ -8,7 +8,7 @@ interface NavigationItem {
 export default function Navigation() {
   const items: NavigationItem[] = [
     { title: "INICIO", href: "/" },
-    { title: "PRODUCTOS", href: "/productos" },
+    { title: "PRODUCTOS", href: "/productos/celulares" },
     { title: "NOSOTROS", href: "/nosotros" },
     { title: "CONTACTO", href: "/contacto" },
   ]

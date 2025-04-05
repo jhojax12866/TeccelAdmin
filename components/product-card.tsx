@@ -2,66 +2,76 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart } from "lucide-react"
-import { Button } from "./ui/button"
-
+import { motion } from "framer-motion"
+import { formatPrice } from "@/lib/utils"
+import { Product } from "@/app/productos/category/page"
 interface ProductCardProps {
-  product: {
-    id: string
-    brand: string
-    model: string
-    storage: string
-    price: number
-    image: string
-  }
+  product: Product
+  viewMode?: "grid" | "list"
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
-  // Format price with Colombian peso format
-  const formattedPrice = new Intl.NumberFormat("es-CO", {
-    style: "currency",
-    currency: "COP",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(product.price)
+export default function ProductCard({ product, viewMode = "grid" }: ProductCardProps) {
+  const { id, brand, model, storage, price, image } = product
+
+  // Generar un slug para la URL del producto
+  const productSlug = `${brand.toLowerCase()}-${model.toLowerCase().replace(/\s+/g, "-")}-${storage.toLowerCase()}`
+
+  if (viewMode === "list") {
+    return (
+      <motion.div
+        className="flex overflow-hidden bg-white border rounded-lg shadow-sm"
+        whileHover={{ y: -2 }}
+        transition={{ type: "spring", stiffness: 400 }}
+      >
+        <div className="relative w-1/3 h-40">
+          <Image src={image || "/placeholder.svg"} alt={`${brand} ${model}`} fill className="object-contain" />
+        </div>
+        <div className="flex flex-col justify-between w-2/3 p-4">
+          <div>
+            <h3 className="text-lg font-semibold">
+              {brand} {model}
+            </h3>
+            <p className="text-sm text-gray-600">{storage}</p>
+          </div>
+          <div className="flex items-center justify-between mt-4">
+            <span className="text-lg font-bold text-red-500">{formatPrice(price)}</span>
+            <Link
+              href={`/producto/${productSlug}`}
+              className="px-4 py-2 text-sm text-white bg-red-500 rounded hover:bg-red-600"
+            >
+              Ver Detalles
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+    )
+  }
 
   return (
-    <div className="group relative overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
-      <Link href={`/productos/${product.id}`} className="absolute inset-0 z-10">
-        <span className="sr-only">
-          Ver {product.brand} {product.model}
-        </span>
-      </Link>
-
-      <div className="relative aspect-square overflow-hidden bg-gray-100 p-4">
-        <Image
-          src={product.image || "/placeholder.svg"}
-          alt={`${product.brand} ${product.model}`}
-          fill
-          className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
-        />
+    <motion.div
+      className="overflow-hidden bg-white border rounded-lg shadow-sm"
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <div className="relative h-48 p-4">
+        <Image src={image || "/placeholder.svg"} alt={`${brand} ${model}`} fill className="object-contain" />
       </div>
-
       <div className="p-4">
-        <div className="mb-1 text-xs font-medium text-[#e41e26]">{product.brand}</div>
-        <h3 className="mb-1 text-sm font-semibold">{product.model}</h3>
-        <div className="mb-3 text-xs text-gray-500">{product.storage}</div>
-        <div className="flex items-center justify-between">
-          <div className="text-lg font-bold">{formattedPrice}</div>
-          <Button
-            size="sm"
-            className="z-20 relative bg-[#e41e26] hover:bg-[#c41a21]"
-            onClick={(e) => {
-              e.preventDefault()
-              // Add to cart functionality would go here
-              alert(`${product.brand} ${product.model} añadido al carrito`)
-            }}
+        <h3 className="font-semibold">
+          {brand} {model}
+        </h3>
+        <p className="text-sm text-gray-600">{storage}</p>
+        <div className="flex items-center justify-between mt-4">
+          <span className="text-lg font-bold text-red-500">{formatPrice(price)}</span>
+          <Link
+            href={`/producto/${productSlug}`}
+            className="px-3 py-1 text-sm text-white bg-red-500 rounded hover:bg-red-600"
           >
-            <ShoppingCart className="h-4 w-4" />
-          </Button>
+            Ver
+          </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
