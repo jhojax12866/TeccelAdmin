@@ -93,6 +93,14 @@ export default function ProductPage() {
           name: color.name,
           code: 'code' in color ? color.code : color.hex,
         })),
+        specifications: {
+          ...foundProduct.specifications,
+          connectivity: {
+            ...foundProduct.specifications.connectivity,
+            nfc: foundProduct.specifications.connectivity.nfc ?? false,
+          },
+          weight: foundProduct.specifications.weight ?? "N/A",
+        },
       };
       setProduct(transformedProduct);
       setSelectedColor(transformedProduct.colors[0].name);
@@ -114,7 +122,7 @@ export default function ProductPage() {
     const message = encodeURIComponent(
       `Hola, estoy interesado en comprar el ${product.brand} ${product.model} (${product.storage}/${product.ram}) en color ${selectedColor}. ¿Está disponible?`
     );
-    const productUrl = encodeURIComponent(`${window.location.origin}/producto/${product.id}`);
+    const productUrl = encodeURIComponent(`${process.env.NEXT_PUBLIC_BASE_URL}/producto/${product.id}`);
     window.open(`https://wa.me/+573229004323?text=${message} ${productUrl}`, '_blank');
   };
 
@@ -170,22 +178,11 @@ export default function ProductPage() {
         <div className="flex flex-col">
           <div className="mb-6">
             <h1 className="text-3xl font-bold mb-2">{product.brand} {product.model}</h1>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star
-                    key={star}
-                    className={`h-5 w-5 ${star <= 4 ? "fill-primary text-primary" : "fill-muted text-muted-foreground"}`}
-                  />
-                ))}
-              </div>
-              <span className="text-sm text-muted-foreground">(120 reseñas)</span>
-            </div>
+           
             
             <div className="flex items-baseline gap-4 mb-6">
               <span className="text-3xl font-bold text-primary">{formatPrice(product.price)}</span>
               <span className="text-sm text-muted-foreground line-through">{formatPrice(product.price * 1.2)}</span>
-              <Badge variant="outline" className="text-green-600 border-green-600">20% Descuento</Badge>
             </div>
 
             <div className="grid gap-4 mb-6">
@@ -193,7 +190,7 @@ export default function ProductPage() {
                 <h3 className="font-medium mb-2">Almacenamiento: <span className="font-bold">{product.storage}</span></h3>
                 <h3 className="font-medium mb-2">Memoria RAM: <span className="font-bold">{product.ram}</span></h3>
               </div>
-              
+               {/* Proximamente 
               <div>
                 <h3 className="font-medium mb-3">Color:</h3>
                 <RadioGroup 
@@ -223,7 +220,7 @@ export default function ProductPage() {
                     </div>
                   ))}
                 </RadioGroup>
-              </div>
+              </div>*/}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -235,10 +232,7 @@ export default function ProductPage() {
                 <ShoppingCart className="h-5 w-5" />
                 Comprar Ahora
               </Button>
-              <Button variant="outline" size="lg" className="flex-1 gap-2">
-                <Heart className="h-5 w-5" />
-                Añadir a Favoritos
-              </Button>
+              
             </div>
 
             <Card className="bg-muted/50">

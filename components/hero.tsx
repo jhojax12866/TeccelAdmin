@@ -36,10 +36,17 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
+            <a
+              href="https://wa.me/+573229004323?text=Hola%20Teccel%2C%20estoy%20interesado%20en%20un%20producto"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button className="group relative overflow-hidden bg-[#e41e26] hover:bg-[#c41a21]">
                 <span className="relative z-10">COMPRAR AHORA</span>
                 <span className="absolute inset-0 -translate-x-full bg-[#c41a21] transition-transform group-hover:translate-x-0"></span>
               </Button>
+            </a>
+
 
               <Button variant="outline" className="group border-[#e41e26] text-[#e41e26] hover:bg-[#e41e26]/10">
                 DETALLES

@@ -57,7 +57,7 @@ export default function ContactPageContent() {
                       <Mail className="h-5 w-5 text-[#e41e26] mt-0.5" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <p className="text-sm text-gray-600">teccelmocoa@gmail.com</p>
+                        <p className="text-sm text-gray-600">teccelmocoa25@gmail.com</p>
                       </div>
                     </div>
 

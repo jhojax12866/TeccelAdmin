@@ -5,7 +5,7 @@
     "model": "Redmi Note 14",
     "storage": "256GB",
     "ram": "8GB",
-    "price": 899900,
+    "price": 775000,
     "image": "/xiaomi/note14.png",
     "featured": true,
     "colors": [
@@ -22,19 +22,19 @@
         "refresh_rate": "120Hz"
       },
       "processor": {
-        "chipset": "MediaTek Dimensity 7050",
+        "chipset": "Helio G99-Ultra",
         "cores": "Octa-core",
-        "gpu": "Mali-G68 MC4"
+        "gpu": "Mali-G57 MC2"
       },
       "camera": {
-        "main": "108MP, f/1.8, PDAF",
+        "main": "108MP, f/1.7, PDAF",
         "ultrawide": "8MP, f/2.2, 120°",
         "macro": "2MP, f/2.4",
-        "front": "16MP, f/2.4"
+        "front": "20MP, f/2.2"
       },
       "battery": {
-        "capacity": "5000mAh",
-        "charging": "67W fast charging"
+        "capacity": "5500mAh",
+        "charging": "Carga turbo de 33W"
       },
       "connectivity": {
         "wifi": "Wi-Fi 6",
@@ -42,9 +42,9 @@
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "162.2 x 75.6 x 8.1 mm",
-      "weight": "189g",
-      "os": "Android 14 with MIUI 15",
+      "dimensions": "163.25 x 76.55 x 8.16 mm",
+      "weight": "196.5g",
+      "os": "Xiaomi HyperOS",
       "additional_features": {
         "fingerprint": "Side-mounted",
         "waterproof": "IP53 splash resistant",
@@ -57,8 +57,8 @@
     "brand": "Xiaomi",
     "model": "Redmi 14C",
     "storage": "256GB",
-    "ram": "6GB",
-    "price": 799900,
+    "ram": "4 + 4 GB",
+    "price": 550000,
     "image": "/xiaomi/redmi14c.png",
     "featured": false,
     "colors": [
@@ -69,33 +69,31 @@
     "specifications": {
       "display": {
         "type": "IPS LCD",
-        "size": "6.5 inches",
-        "resolution": "1600 x 720 pixels",
-        "refresh_rate": "90Hz"
+        "size": "6.88 inches",
+        "resolution": "1640 x 720 pixels",
+        "refresh_rate": "120Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G85",
-        "cores": "Octa-core",
+        "chipset": "MediaTek Helio G81-Ultra",
+        "cores": "Cortex-A75+Cortex-A55",
         "gpu": "Mali-G52 MC2"
       },
       "camera": {
         "main": "50MP, f/1.8, PDAF",
-        "depth": "2MP, f/2.4",
-        "front": "8MP, f/2.0"
+        "front": "13MP, f/2.0"
       },
       "battery": {
-        "capacity": "5000mAh",
+        "capacity": "5160mAh",
         "charging": "18W fast charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.1",
-        "nfc": false,
+        "wifi": "Wi-Fi: 2.4GHz | 5GHz",
+        "bluetooth": "5.4",
         "usb": "Type-C 2.0"
       },
-      "dimensions": "160.9 x 74.8 x 8.5 mm",
-      "weight": "192g",
-      "os": "Android 14 with MIUI 15",
+      "dimensions": "171.88 x 77.8 x 8.22 mm",
+      "weight": "204g",
+      "os": "Xiaomi HyperOS",
       "additional_features": {
         "fingerprint": "Rear-mounted",
         "waterproof": "No certification",
@@ -108,8 +106,8 @@
     "brand": "Xiaomi",
     "model": "Redmi 14C",
     "storage": "128GB",
-    "ram": "4GB",
-    "price": 699900,
+    "ram": "4 + 4 GB",
+    "price": 490000,
     "image": "/xiaomi/redmi14c.png",
     "featured": false,
     "colors": [
@@ -120,89 +118,34 @@
     "specifications": {
       "display": {
         "type": "IPS LCD",
-        "size": "6.5 inches",
-        "resolution": "1600 x 720 pixels",
-        "refresh_rate": "90Hz"
+        "size": "6.88 inches",
+        "resolution": "1640 x 720 pixels",
+        "refresh_rate": "120Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G85",
-        "cores": "Octa-core",
+        "chipset": "MediaTek Helio G81-Ultra",
+        "cores": "Cortex-A75+Cortex-A55",
         "gpu": "Mali-G52 MC2"
       },
       "camera": {
         "main": "50MP, f/1.8, PDAF",
-        "depth": "2MP, f/2.4",
-        "front": "8MP, f/2.0"
+        "front": "13MP, f/2.0"
       },
       "battery": {
-        "capacity": "5000mAh",
+        "capacity": "5160mAh",
         "charging": "18W fast charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.1",
-        "nfc": false,
+        "wifi": "Wi-Fi: 2.4GHz | 5GHz",
+        "bluetooth": "5.4",
         "usb": "Type-C 2.0"
       },
-      "dimensions": "160.9 x 74.8 x 8.5 mm",
-      "weight": "192g",
-      "os": "Android 14 with MIUI 15",
+      "dimensions": "171.88 x 77.8 x 8.22 mm",
+      "weight": "204g",
+      "os": "Xiaomi HyperOS",
       "additional_features": {
         "fingerprint": "Rear-mounted",
         "waterproof": "No certification",
-        "headphone_jack": true
-      }
-    }
-  },
-  {
-    "id": "xiaomi-redmi-14-256gb",
-    "brand": "Xiaomi",
-    "model": "Redmi 14",
-    "storage": "256GB",
-    "ram": "8GB",
-    "price": 849900,
-    "image": "/xiaomi/note141.png",
-    "featured": true,
-    "colors": [
-      {"name": "Carbon Black", "code": "#232323"},
-      {"name": "Arctic Blue", "code": "#94C5CC"},
-      {"name": "Jade Green", "code": "#2A6459"},
-      {"name": "Sunset Gold", "code": "#DAA520"}
-    ],
-    "specifications": {
-      "display": {
-        "type": "AMOLED",
-        "size": "6.5 inches",
-        "resolution": "2400 x 1080 pixels",
-        "refresh_rate": "120Hz"
-      },
-      "processor": {
-        "chipset": "Snapdragon 6 Gen 1",
-        "cores": "Octa-core",
-        "gpu": "Adreno 710"
-      },
-      "camera": {
-        "main": "64MP, f/1.8, PDAF",
-        "ultrawide": "8MP, f/2.2, 118°",
-        "macro": "2MP, f/2.4",
-        "front": "13MP, f/2.4"
-      },
-      "battery": {
-        "capacity": "5100mAh",
-        "charging": "33W fast charging"
-      },
-      "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.2",
-        "nfc": true,
-        "usb": "Type-C 2.0"
-      },
-      "dimensions": "161.1 x 75.2 x 8.0 mm",
-      "weight": "186g",
-      "os": "Android 14 with MIUI 15",
-      "additional_features": {
-        "fingerprint": "Side-mounted",
-        "waterproof": "IP53 splash resistant",
         "headphone_jack": true
       }
     }
@@ -213,7 +156,7 @@
     "model": "Redmi 13",
     "storage": "256GB",
     "ram": "8GB",
-    "price": 749900,
+    "price": 655000,
     "image": "/xiaomi/redmi13.png",
     "featured": false,
     "colors": [
@@ -224,38 +167,38 @@
     ],
     "specifications": {
       "display": {
-        "type": "IPS LCD",
-        "size": "6.5 inches",
-        "resolution": "2400 x 1080 pixels",
+        "type": "DotDisplay ",
+        "size": "6.79 inches",
+        "resolution": "2460 x 1080 pixels",
         "refresh_rate": "90Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G99",
-        "cores": "Octa-core",
-        "gpu": "Mali-G57 MC2"
+        "chipset": "MediaTek Helio G91-Ultra",
+        "cores": "ocho núcleos",
+        "gpu": "Mali-G52 MC2"
       },
       "camera": {
-        "main": "50MP, f/1.8, PDAF",
+        "main": "108MP, f/1.75",
         "ultrawide": "8MP, f/2.2",
         "macro": "2MP, f/2.4",
-        "front": "13MP, f/2.4"
+        "front": "13MP, f/2.45"
       },
       "battery": {
-        "capacity": "5000mAh",
+        "capacity": "5030mAh",
         "charging": "33W fast charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.1",
+        "wifi": "Wi-Fi: 2.4GHz | 5GHz",
+        "bluetooth": "5.4",
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "160.5 x 74.3 x 8.1 mm",
-      "weight": "183g",
-      "os": "Android 13 with MIUI 14",
+      "dimensions": "168.6 x 76.28 x 8.3 mm",
+      "weight": "205 g",
+      "os": "Xiaomi HyperOS",
       "additional_features": {
-        "fingerprint": "Side-mounted",
-        "waterproof": "IP52 splash resistant",
+        "fingerprint": "Sensor lateral de huellas digitales",
+        "waterproof": "No certification",
         "headphone_jack": true
       }
     }
@@ -265,8 +208,8 @@
     "brand": "Xiaomi",
     "model": "Redmi Note 14 Pro",
     "storage": "256GB",
-    "ram": "12GB",
-    "price": 1099900,
+    "ram": "8 GB",
+    "price": 1100000,
     "image": "/xiaomi/redmi14pro.png",
     "featured": true,
     "colors": [
@@ -274,60 +217,6 @@
       {"name": "Aurora Blue", "code": "#4169E1"},
       {"name": "Emerald Green", "code": "#046307"},
       {"name": "Platinum White", "code": "#E5E4E2"}
-    ],
-    "specifications": {
-      "display": {
-        "type": "AMOLED",
-        "size": "6.78 inches",
-        "resolution": "2712 x 1220 pixels",
-        "refresh_rate": "144Hz"
-      },
-      "processor": {
-        "chipset": "MediaTek Dimensity 8220",
-        "cores": "Octa-core",
-        "gpu": "Mali-G610 MC6"
-      },
-      "camera": {
-        "main": "200MP, f/1.7, OIS, PDAF",
-        "ultrawide": "8MP, f/2.2, 120°",
-        "macro": "2MP, f/2.4",
-        "front": "32MP, f/2.2"
-      },
-      "battery": {
-        "capacity": "5500mAh",
-        "charging": "120W fast charging"
-      },
-      "connectivity": {
-        "wifi": "Wi-Fi 6",
-        "bluetooth": "5.3",
-        "nfc": true,
-        "usb": "Type-C 2.0"
-      },
-      "dimensions": "164.5 x 76.1 x 8.4 mm",
-      "weight": "195g",
-      "os": "Android 14 with MIUI 15",
-      "additional_features": {
-        "fingerprint": "Under-display",
-        "waterproof": "IP68 dust/water resistant",
-        "headphone_jack": false,
-        "stereo_speakers": true,
-        "dolby_atmos": true
-      }
-    }
-  },
-  {
-    "id": "xiaomi-redmi-a3x-128gb",
-    "brand": "Xiaomi",
-    "model": "Redmi A3X",
-    "storage": "128GB",
-    "ram": "4GB",
-    "price": 599900,
-    "image": "/xiaomi/a3x.png",
-    "featured": false,
-    "colors": [
-      {"name": "Midnight Black", "code": "#121212"},
-      {"name": "Sky Blue", "code": "#7EC0EE"},
-      {"name": "Forest Green", "code": "#228B22"}
     ],
     "specifications": {
       "display": {
@@ -367,12 +256,161 @@
     }
   },
   {
+    "id": "xiaomi-redmi-a3x-64gb",
+    "brand": "Xiaomi",
+    "model": "Redmi A3X",
+    "storage": "64 GB",
+    "ram": "3GB",
+    "price": 330000,
+    "image": "/xiaomi/a3x.png",
+    "featured": false,
+    "colors": [
+      {"name": "Midnight Black", "code": "#121212"},
+      {"name": "Sky Blue", "code": "#7EC0EE"},
+      {"name": "Forest Green", "code": "#228B22"}
+    ],
+    "specifications": {
+      "display": {
+        "type": "IPS LCD",
+        "size": "6.71 inches",
+        "resolution": "1650 X 720 pixels",
+        "refresh_rate": "90Hz"
+      },
+      "processor": {
+        "chipset": "Unisoc T603",
+        "cores": "ocho núcleos",
+        "gpu": "Mali-G52"
+      },
+      "camera": {
+        "main": "8MP, f/2.0",
+        "front": "5MP, f/2.2"
+      },
+      "battery": {
+        "capacity": "5000mAh",
+        "charging": "10W charging"
+      },
+      "connectivity": {
+        "wifi": "Wi-Fi 802.11 b/g/n",
+        "bluetooth": "4.2",
+        "nfc": false,
+        "usb": "Type-C 2.0"
+      },
+      "dimensions": "168.4 x 76.3 x 8.3 mm",
+      "os": "Xiaomi HyperOS",
+      "additional_features": {
+        "fingerprint": "Rear-mounted",
+        "waterproof": "No certification",
+        "headphone_jack": true
+      }
+    }
+  },
+  {
+    "id": "xiaomi-redmi-a3x-128gb",
+    "brand": "Xiaomi",
+    "model": "Redmi A3X",
+    "storage": "128GB",
+    "ram": "4GB",
+    "price": 450000,
+    "image": "/xiaomi/a3x.png",
+    "featured": false,
+    "colors": [
+      {"name": "Midnight Black", "code": "#121212"},
+      {"name": "Sky Blue", "code": "#7EC0EE"},
+      {"name": "Forest Green", "code": "#228B22"}
+    ],
+    "specifications": {
+      "display": {
+        "type": "IPS LCD",
+        "size": "6.71 inches",
+        "resolution": "1650 X 720 pixels",
+        "refresh_rate": "90Hz"
+      },
+      "processor": {
+        "chipset": "Unisoc T603",
+        "cores": "ocho núcleos",
+        "gpu": "Mali-G52"
+      },
+      "camera": {
+        "main": "8MP, f/2.0",
+        "depth": "2MP, f/2.4",
+        "front": "5MP, f/2.2"
+      },
+      "battery": {
+        "capacity": "5000mAh",
+        "charging": "10W charging"
+      },
+      "connectivity": {
+        "wifi": "Wi-Fi 802.11 b/g/n",
+        "bluetooth": "4.2",
+        "nfc": false,
+        "usb": "Type-C 2.0"
+      },
+      "dimensions": "168.4 x 76.3 x 8.3 mm",
+      "os": "Xiaomi HyperOS",
+      "additional_features": {
+        "fingerprint": "Rear-mounted",
+        "waterproof": "No certification",
+        "headphone_jack": true
+      }
+    }
+  },
+  {
+    "id": "xiaomi-redmi-a3x-64gb",
+    "brand": "Xiaomi",
+    "model": "Redmi A3X",
+    "storage": "64 GB",
+    "ram": "3GB",
+    "price": 330000,
+    "image": "/xiaomi/a3x.png",
+    "featured": false,
+    "colors": [
+      {"name": "Midnight Black", "code": "#121212"},
+      {"name": "Sky Blue", "code": "#7EC0EE"},
+      {"name": "Forest Green", "code": "#228B22"}
+    ],
+    "specifications": {
+      "display": {
+        "type": "IPS LCD",
+        "size": "6.71 inches",
+        "resolution": "1650 X 720 pixels",
+        "refresh_rate": "90Hz"
+      },
+      "processor": {
+        "chipset": "Unisoc T603",
+        "cores": "ocho núcleos",
+        "gpu": "Mali-G52"
+      },
+      "camera": {
+        "main": "8MP, f/2.0",
+        "depth": "2MP, f/2.4",
+        "front": "5MP, f/2.2"
+      },
+      "battery": {
+        "capacity": "5000mAh",
+        "charging": "10W charging"
+      },
+      "connectivity": {
+        "wifi": "Wi-Fi 802.11 b/g/n",
+        "bluetooth": "4.2",
+        "nfc": false,
+        "usb": "Type-C 2.0"
+      },
+      "dimensions": "168.4 x 76.3 x 8.3 mm",
+      "os": "Xiaomi HyperOS",
+      "additional_features": {
+        "fingerprint": "Rear-mounted",
+        "waterproof": "No certification",
+        "headphone_jack": true
+      }
+    }
+  },
+  {
     "id": "samsung-a35-256gb",
     "brand": "Samsung",
     "model": "Galaxy A35",
     "storage": "256GB",
     "ram": "8GB",
-    "price": 1299900,
+    "price": 1150000,
     "image": "/samsung/a35.png",
     "featured": true,
     "colors": [
@@ -409,11 +447,11 @@
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "161.7 x 78.0 x 8.2 mm",
+      "dimensions": "161.7 x 78 x 8.2 mm",
       "weight": "209g",
-      "os": "Android 14 with One UI 6.0",
+      "os": "Android 14 ",
       "additional_features": {
-        "fingerprint": "Under-display",
+        "fingerprint": "Lector de huellas (bajo pantalla) y Desbloqueo facial",
         "waterproof": "IP67 dust/water resistant",
         "headphone_jack": true,
         "stereo_speakers": true,
@@ -426,8 +464,8 @@
     "brand": "Samsung",
     "model": "Galaxy A16",
     "storage": "256GB",
-    "ram": "6GB",
-    "price": 899900,
+    "ram": "8GB",
+    "price": 835000,
     "image": "/samsung/a16.png",
     "featured": false,
     "colors": [
@@ -439,7 +477,7 @@
       "display": {
         "type": "Super AMOLED",
         "size": "6.5 inches",
-        "resolution": "1080 x 2400 pixels",
+        "resolution": "1080 x 2340 pixels",
         "refresh_rate": "90Hz"
       },
       "processor": {
@@ -458,16 +496,16 @@
         "charging": "25W fast charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.2",
+        "wifi": "Wi-Fi 802.11 ",
+        "bluetooth": "5.3",
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "163.9 x 76.5 x 8.1 mm",
-      "weight": "198g",
+      "dimensions": "164.4 x 77.9 x 7.9 mm",
+      "weight": "200g",
       "os": "Android 14 with One UI 6.0",
       "additional_features": {
-        "fingerprint": "Side-mounted",
+        "fingerprint": "Lector de huellas (de costado) y Desbloqueo facial",
         "waterproof": "IP54 splash resistant",
         "headphone_jack": true,
         "knox_security": true
@@ -480,7 +518,7 @@
     "model": "Galaxy A05",
     "storage": "64GB",
     "ram": "4GB",
-    "price": 499900,
+    "price": 370000,
     "image": "/samsung/a05.png",
     "featured": false,
     "colors": [
@@ -496,7 +534,7 @@
         "refresh_rate": "60Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G85",
+        "chipset": "Mediatek MT6769V/CZ Helio G85",
         "cores": "Octa-core",
         "gpu": "Mali-G52 MC2"
       },
@@ -510,16 +548,16 @@
         "charging": "15W charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.1",
+        "wifi": "Wi-Fi 802.11",
+        "bluetooth": "5.3",
         "nfc": false,
         "usb": "Type-C 2.0"
       },
       "dimensions": "168.8 x 78.2 x 8.8 mm",
       "weight": "195g",
-      "os": "Android 13 with One UI Core 5.1",
+      "os": "Android 13 ",
       "additional_features": {
-        "fingerprint": "Side-mounted",
+        "fingerprint": "Desbloqueo facial",
         "waterproof": "No certification",
         "headphone_jack": true
       }
@@ -531,7 +569,7 @@
     "model": "Galaxy A06",
     "storage": "128GB",
     "ram": "4GB",
-    "price": 599900,
+    "price": 465000,
     "image": "/samsung/a06.png",
     "featured": false,
     "colors": [
@@ -542,14 +580,14 @@
     "specifications": {
       "display": {
         "type": "PLS LCD",
-        "size": "6.6 inches",
+        "size": "6.7 inches",
         "resolution": "720 x 1600 pixels",
         "refresh_rate": "60Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G99",
+        "chipset": "Mediatek Helio G85 octa-core 2GHz",
         "cores": "Octa-core",
-        "gpu": "Mali-G57 MC2"
+        "gpu": "Mali-G52 MC2"
       },
       "camera": {
         "main": "50MP, f/1.8",
@@ -561,16 +599,16 @@
         "charging": "15W charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
+        "wifi": "Wi-Fi 802.11a",
         "bluetooth": "5.2",
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "167.9 x 78.0 x 8.8 mm",
-      "weight": "195g",
-      "os": "Android 14 with One UI Core 6.0",
+      "dimensions": "167.3 x 77.3 x 8.0 mm",
+      "weight": "189g",
+      "os": "Android 14",
       "additional_features": {
-        "fingerprint": "Side-mounted",
+        "fingerprint": "Lector de huellas (de costado)",
         "waterproof": "No certification",
         "headphone_jack": true
       }
@@ -582,8 +620,8 @@
     "model": "Spark Go 1",
     "storage": "128GB",
     "ram": "4GB",
-    "price": 449900,
-    "image": "/tecno/g11.png",
+    "price": 445000,
+    "image": "/tecno/gO11.png",
     "featured": false,
     "colors": [
       {"name": "Mystery White", "code": "#FFFFFF"},
@@ -593,18 +631,18 @@
     "specifications": {
       "display": {
         "type": "IPS LCD",
-        "size": "6.6 inches",
-        "resolution": "720 x 1612 pixels",
-        "refresh_rate": "90Hz"
+        "size": "6.67 inches",
+        "resolution": "700 x 1600 pixels",
+        "refresh_rate": "120Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G37",
+        "chipset": "Unisoc T615",
         "cores": "Octa-core",
-        "gpu": "PowerVR GE8320"
+        "gpu": " Mali-G57 MP1"
       },
       "camera": {
-        "main": "13MP, f/1.8",
-        "depth": "QVGA",
+        "main": "13 MP, f/1.8",
+        "depth": "Flash dual-LED, HDR",
         "front": "8MP, f/2.0"
       },
       "battery": {
@@ -612,17 +650,17 @@
         "charging": "10W charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.0",
+        "wifi": "Si",
+        "bluetooth": "Si",
         "nfc": false,
         "usb": "Type-C 2.0"
       },
       "dimensions": "163.8 x 75.6 x 8.5 mm",
       "weight": "191g",
-      "os": "Android 13 (Go Edition) with HiOS 13",
+      "os": "Android 14 Go",
       "additional_features": {
-        "fingerprint": "Side-mounted",
-        "waterproof": "No certification",
+        "fingerprint": "Huella dactilar (montada al lateral)",
+        "waterproof": "Tasa de IP54",
         "headphone_jack": true
       }
     }
@@ -633,8 +671,8 @@
     "model": "Spark Go 1",
     "storage": "64GB",
     "ram": "3GB",
-    "price": 399900,
-    "image": "/tecno/g1.png",
+    "price": 355000,
+    "image": "/tecno/gO1.png",
     "featured": false,
     "colors": [
       {"name": "Mystery White", "code": "#FFFFFF"},
@@ -644,18 +682,18 @@
     "specifications": {
       "display": {
         "type": "IPS LCD",
-        "size": "6.6 inches",
-        "resolution": "720 x 1612 pixels",
-        "refresh_rate": "90Hz"
+        "size": "6.67 inches",
+        "resolution": "700 x 1600 pixels",
+        "refresh_rate": "120Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G37",
+        "chipset": "Unisoc T615",
         "cores": "Octa-core",
-        "gpu": "PowerVR GE8320"
+        "gpu": " Mali-G57 MP1"
       },
       "camera": {
-        "main": "13MP, f/1.8",
-        "depth": "QVGA",
+        "main": "13 MP, f/1.8",
+        "depth": "Flash dual-LED, HDR",
         "front": "8MP, f/2.0"
       },
       "battery": {
@@ -663,28 +701,28 @@
         "charging": "10W charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.0",
+        "wifi": "Si",
+        "bluetooth": "Si",
         "nfc": false,
         "usb": "Type-C 2.0"
       },
       "dimensions": "163.8 x 75.6 x 8.5 mm",
       "weight": "191g",
-      "os": "Android 13 (Go Edition) with HiOS 13",
+      "os": "Android 14 Go",
       "additional_features": {
-        "fingerprint": "Side-mounted",
-        "waterproof": "No certification",
+        "fingerprint": "Huella dactilar (montada al lateral)",
+        "waterproof": "Tasa de IP54",
         "headphone_jack": true
       }
     }
   },
   {
-    "id": "tecno-spark-30c-256gb",
+    "id": "tecno-spark-30c-256gb", 
     "brand": "Tecno",
     "model": "Spark 30C",
     "storage": "256GB",
     "ram": "8GB",
-    "price": 699900,
+    "price": 550000,
     "image": "/tecno/spark30c.png",
     "featured": true,
     "colors": [
@@ -696,36 +734,36 @@
     "specifications": {
       "display": {
         "type": "IPS LCD",
-        "size": "6.78 inches",
-        "resolution": "1080 x 2460 pixels",
+        "size": "6.67 inches",
+        "resolution": "1600 x 720 pixels",
         "refresh_rate": "120Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G99",
+        "chipset": "Mediatek Helio G81",
         "cores": "Octa-core",
-        "gpu": "Mali-G57 MC2"
+        "gpu": "Mali-G52 MC2"
       },
       "camera": {
-        "main": "108MP, f/1.75, PDAF",
-        "depth": "2MP, f/2.4",
-        "front": "32MP, f/2.2"
+        "main": "50 MP, (Ancho), 1/2.8″, PDAF",
+        "depth": "0.08 MP (auxiliary lenses)",
+        "front": "8 MP, f/2.4, (angular )"
       },
       "battery": {
         "capacity": "5000mAh",
-        "charging": "33W fast charging"
+        "charging": "18W fast charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.2",
+        "wifi": "Wi-Fi 802.11",
+        "bluetooth": "Si",
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "168.6 x 76.6 x 8.0 mm",
-      "weight": "195g",
-      "os": "Android 13 with HiOS 13.5",
+      "dimensions": "168.6 x 76.6 x 8.4 mm",
+      "weight": "206g",
+      "os": "Android 14",
       "additional_features": {
-        "fingerprint": "Side-mounted",
-        "waterproof": "IP53 splash resistant",
+        "fingerprint": "Huella digital (montada Boton Lateral )",
+        "waterproof": "IP54, dust and splash resistant",
         "headphone_jack": true,
         "stereo_speakers": true
       }
@@ -737,7 +775,7 @@
     "model": "Spark 30",
     "storage": "256GB",
     "ram": "8GB",
-    "price": 649900,
+    "price": 645000,
     "image": "/tecno/spark30normal.png",
     "featured": false,
     "colors": [
@@ -751,35 +789,35 @@
         "type": "IPS LCD",
         "size": "6.78 inches",
         "resolution": "1080 x 2460 pixels",
-        "refresh_rate": "90Hz"
+        "refresh_rate": "120Hz"
       },
       "processor": {
-        "chipset": "MediaTek Helio G88",
+        "chipset": "Mediatek Helio G91",
         "cores": "Octa-core",
         "gpu": "Mali-G52 MC2"
       },
       "camera": {
-        "main": "64MP, f/1.7, PDAF",
-        "ultrawide": "8MP, f/2.2",
-        "depth": "2MP, f/2.4",
-        "front": "16MP, f/2.0"
+        "main": "64MP64 MP, (Ancho), 1/2.8″, PDAF",
+        "ultrawide": "0.08 MP (auxiliary lenses)",
+        "depth": "0.08 MP (auxiliary lenses)",
+        "front": "13MP, f/2.4"
       },
       "battery": {
         "capacity": "5000mAh",
-        "charging": "33W fast charging"
+        "charging": "18W fast charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.2",
+        "wifi": "Wi-Fi 802.11",
+        "bluetooth": "si",
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "168.5 x 76.5 x 8.3 mm",
-      "weight": "188g",
-      "os": "Android 14 with HiOS 13",
+      "dimensions": "168 x 76.4 x 7.7 mm",
+      "weight": "206g",
+      "os": "Android 14",
       "additional_features": {
-        "fingerprint": "Side-mounted",
-        "waterproof": "IP54 splash resistant",
+        "fingerprint": "Huella digital (montada Boton Lateral )",
+        "waterproof": "No certification",
         "headphone_jack": true,
         "stereo_speakers": false
       }
@@ -790,8 +828,8 @@
     "brand": "Tecno",
     "model": "Spark 30 Pro",
     "storage": "256GB",
-    "ram": "12GB",
-    "price": 799900,
+    "ram": "8 GB",
+    "price": 795000,
     "image": "/tecno/spark30pro.png",
     "featured": true,
     "colors": [
@@ -804,36 +842,36 @@
       "display": {
         "type": "AMOLED",
         "size": "6.78 inches",
-        "resolution": "1080 x 2436 pixels",
+        "resolution": "1080 x 2460 pixels",
         "refresh_rate": "120Hz"
       },
       "processor": {
-        "chipset": "MediaTek Dimensity 8020",
+        "chipset": "Mediatek Helio G100 ",
         "cores": "Octa-core",
-        "gpu": "Mali-G77 MC9"
+        "gpu": "Mediatek Helio G100 "
       },
       "camera": {
-        "main": "108MP, f/1.8, PDAF, OIS",
-        "ultrawide": "13MP, f/2.2, 120°",
-        "macro": "2MP, f/2.4",
-        "front": "32MP, f/2.2"
+        "main": "108MP, f/1.9",
+        "ultrawide": "",
+        "macro": "",
+        "front": "13MP, f/2.4"
       },
       "battery": {
         "capacity": "5500mAh",
-        "charging": "66W fast charging"
+        "charging": "33W fast charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 6",
-        "bluetooth": "5.3",
+        "wifi": "Wi-Fi 802.11",
+        "bluetooth": "si",
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "168.9 x 76.8 x 8.0 mm",
-      "weight": "192g",
-      "os": "Android 14 with HiOS 13",
+      "dimensions": "166.6 x 77 x 7.4 mm",
+      "weight": "206 g",
+      "os": "Android 14",
       "additional_features": {
-        "fingerprint": "Under-display",
-        "waterproof": "IP54 splash resistant",
+        "fingerprint": "Huella digital (montada En Pantalla)",
+        "waterproof": "No certification",
         "headphone_jack": true,
         "stereo_speakers": true,
         "dolby_atmos": true
@@ -845,8 +883,8 @@
     "brand": "ZTE",
     "model": "A34",
     "storage": "64GB",
-    "ram": "3GB",
-    "price": 399900,
+    "ram": "2 + 4 GB",
+    "price": 295000,
     "image": "/zte/v34.png",
     "featured": false,
     "colors": [
@@ -857,35 +895,35 @@
     "specifications": {
       "display": {
         "type": "IPS LCD",
-        "size": "6.52 inches",
-        "resolution": "720 x 1600 pixels",
-        "refresh_rate": "60Hz"
+        "size": "6.6 inches",
+        "resolution": "720 x 1612 pixels",
+        "refresh_rate": "1.6GHz"
       },
       "processor": {
-        "chipset": "Unisoc T606",
+        "chipset": "Unisoc SC9863A",
         "cores": "Octa-core",
-        "gpu": "Mali-G57 MP1"
+        "gpu": "IMG8322"
       },
       "camera": {
-        "main": "13MP, f/2.0",
+        "main": "8P, f/2.0",
         "depth": "2MP, f/2.4",
         "front": "5MP, f/2.2"
       },
       "battery": {
-        "capacity": "4000mAh",
-        "charging": "10W charging"
+        "capacity": "5000mAh",
+        "charging": "NOT FAST CHARGING"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 4",
-        "bluetooth": "5.0",
+        "wifi": "Wi-Fi 802.11",
+        "bluetooth": "5.2",
         "nfc": false,
         "usb": "Micro USB"
       },
-      "dimensions": "163.5 x 75.8 x 8.9 mm",
-      "weight": "180g",
-      "os": "Android 13 Go Edition",
+      "dimensions": "164 x 75.8 x 8.5 mm",
+      "weight": "185g",
+      "os": "Android 13 (4GB) / Android 13 (Go Edition) (2GB)",
       "additional_features": {
-        "fingerprint": "Rear-mounted",
+        "fingerprint": "Lector de huellas (de costado)",
         "waterproof": "No certification",
         "headphone_jack": true,
         "stereo_speakers": false
@@ -897,8 +935,8 @@
     "brand": "ZTE",
     "model": "V40",
     "storage": "128GB",
-    "ram": "6GB",
-    "price": 599900,
+    "ram": "4GB",
+    "price": 395000,
     "image": "/zte/v40.png",
     "featured": false,
     "colors": [
@@ -926,20 +964,20 @@
       },
       "battery": {
         "capacity": "5000mAh",
-        "charging": "18W fast charging"
+        "charging": "22.5W"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 5",
-        "bluetooth": "5.0",
+        "wifi": "Wi-Fi 802.11",
+        "bluetooth": "4.2",
         "nfc": false,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "165.2 x 76.2 x 8.3 mm",
-      "weight": "186g",
-      "os": "Android 13 with MyOS 12",
+      "dimensions": "165.8 x 77.2 x 8.7 mm",
+      "weight": "201g",
+      "os": "Android 11",
       "additional_features": {
-        "fingerprint": "Side-mounted",
-        "waterproof": "IP52 splash resistant",
+        "fingerprint": "Lector de huellas (de costado)",
+        "waterproof": "No certification",
         "headphone_jack": true,
         "stereo_speakers": false
       }
@@ -950,8 +988,8 @@
     "brand": "ZTE",
     "model": "V50 Vita",
     "storage": "256GB",
-    "ram": "8GB",
-    "price": 899900,
+    "ram": "4GB",
+    "price": 435000,
     "image": "/zte/v50vita.png",
     "featured": true,
     "colors": [
@@ -963,14 +1001,14 @@
     "specifications": {
       "display": {
         "type": "AMOLED",
-        "size": "6.7 inches",
-        "resolution": "1080 x 2400 pixels",
-        "refresh_rate": "120Hz"
+        "size": "6.75 inches",
+        "resolution": "1600 x 720 pixels",
+        "refresh_rate": "90Hz"
       },
       "processor": {
-        "chipset": "Qualcomm Snapdragon 695",
+        "chipset": "Unisoc T606 1.6GHz",
         "cores": "Octa-core",
-        "gpu": "Adreno 619"
+        "gpu": "Mali-G57 MP1"
       },
       "camera": {
         "main": "64MP, f/1.8, PDAF, OIS",
@@ -983,17 +1021,17 @@
         "charging": "66W fast charging"
       },
       "connectivity": {
-        "wifi": "Wi-Fi 6",
+        "wifi": "Wi-Fi 802.11",
         "bluetooth": "5.2",
         "nfc": true,
         "usb": "Type-C 2.0"
       },
-      "dimensions": "164.0 x 75.6 x 7.9 mm",
-      "weight": "179g",
-      "os": "Android 14 with MyOS 13",
+      "dimensions": "167.4 x 76 x 8.6 mm",
+      "weight": "204g",
+      "os": "Android  13",
       "additional_features": {
-        "fingerprint": "Under-display",
-        "waterproof": "IP65 dust/water resistant",
+        "fingerprint": "Lector de huellas (de costado)",
+        "waterproof": "No certification",
         "headphone_jack": false,
         "stereo_speakers": true,
         "dolby_atmos": true

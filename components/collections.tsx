@@ -40,19 +40,19 @@ export default function Collections() {
   const collections = [
     {
       title: "Celulares",
-      image: "/xiaomi/redmi14c.png",
+      image: "/icons/celulares.png",
       itemCount: 18,
       href: "/productos/celulares",
     },
     {
       title: "Accesorios",
-      image: "/xiaomi/redmi14c.png",
+      image: "/icons/accesorios.png",
       itemCount: 12,
       href: "/productos/accesorios",
     },
     {
       title: "Otros",
-      image: "/xiaomi/redmi14c.png",
+      image: "/icons/otro.png",
       itemCount: 8,
       href: "/productos/otros",
     },
