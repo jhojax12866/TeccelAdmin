@@ -57,7 +57,7 @@ export default function ProductsSection() {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
-          <Link href="/productos">
+          <Link href="/productos/celulares">
             <Button variant="outline" className="group border-[#e41e26] text-[#e41e26] hover:bg-[#e41e26]/10">
               Ver todos los productos
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />

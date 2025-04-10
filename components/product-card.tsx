@@ -12,9 +12,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, viewMode = "grid" }: ProductCardProps) {
   const { id, brand, model, storage, price, image } = product
+  console.log("ProductCard", product)
 
-  // Generar un slug para la URL del producto
-  const productSlug = `${brand.toLowerCase()}-${model.toLowerCase().replace(/\s+/g, "-")}-${storage.toLowerCase()}`
+
 
   if (viewMode === "list") {
     return (
@@ -36,7 +36,7 @@ export default function ProductCard({ product, viewMode = "grid" }: ProductCardP
           <div className="flex items-center justify-between mt-4">
             <span className="text-lg font-bold text-red-500">{formatPrice(price)}</span>
             <Link
-              href={`/producto/${productSlug}`}
+              href={`/producto/${id}`}
               className="px-4 py-2 text-sm text-white bg-red-500 rounded hover:bg-red-600"
             >
               Ver Detalles
@@ -64,7 +64,7 @@ export default function ProductCard({ product, viewMode = "grid" }: ProductCardP
         <div className="flex items-center justify-between mt-4">
           <span className="text-lg font-bold text-red-500">{formatPrice(price)}</span>
           <Link
-            href={`/producto/${productSlug}`}
+            href={`/producto/${id}`}
             className="px-3 py-1 text-sm text-white bg-red-500 rounded hover:bg-red-600"
           >
             Ver
