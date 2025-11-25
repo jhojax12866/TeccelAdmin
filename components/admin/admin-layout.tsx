@@ -130,6 +130,22 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                       Categorías
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/admin/subcategorias"
+                      className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                    >
+                      SubCategorías
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/admin/atributos"
+                      className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
+                    >
+                      Atributos
+                    </Link>
+                  </li>
                 </ul>
               )}
             </li>

@@ -17,16 +17,34 @@ interface Category {
   updatedAt: string
 }
 
-export default function CategoriasPage() {
+interface Subcategory {
+  id: number
+  name: string
+  description: string
+  categoryId: number
+  category?: Category
+  isActive: boolean
+  
+  updatedAt: string
+}
+
+export default function SubcategoriasPage() {
   const router = useRouter()
   const [categories, setCategories] = useState<Category[]>([])
+  const [subcategories, setSubcategories] = useState<Subcategory[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
-  const [currentCategory, setCurrentCategory] = useState<Category | null>(null)
-  const [formData, setFormData] = useState({ name: "", description: "", isActive: true })
+  const [currentSubcategory, setCurrentSubcategory] = useState<Subcategory | null>(null)
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    categoryId: 0,
+    isActive: true,
+  })
   const [error, setError] = useState("")
   const [searchTerm, setSearchTerm] = useState("")
+  const [filterCategoryId, setFilterCategoryId] = useState<number>(0)
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"
@@ -34,10 +52,10 @@ export default function CategoriasPage() {
       router.push("/login")
       return
     }
-    fetchCategories()
+    fetchData()
   }, [router])
 
-  const fetchCategories = async () => {
+  const fetchData = async () => {
     setIsLoading(true)
     setError("")
 
@@ -47,62 +65,94 @@ export default function CategoriasPage() {
         throw new Error("No se encontró el token de acceso")
       }
 
-      const response = await fetch(`${API_BASE_URL}/catalog/categories`, {
+      // Cargar categorías
+      const categoriesResponse = await fetch(`${API_BASE_URL}/catalog/categories`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       })
 
-      if (!response.ok) {
-        throw new Error(`Error al cargar categorías: ${response.status}`)
+      if (!categoriesResponse.ok) {
+        throw new Error(`Error al cargar categorías: ${categoriesResponse.status}`)
       }
 
-      const data: Category[] = await response.json()
-      setCategories(data)
+      const categoriesData: Category[] = await categoriesResponse.json()
+      setCategories(categoriesData)
+
+      // Cargar todas las subcategorías
+      const subcategoriesPromises = categoriesData.map(async (category) => {
+        const response = await fetch(`${API_BASE_URL}/catalog/categories/subcategories/by-category/${category.id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+
+        if (response.ok) {
+          const data: Subcategory[] = await response.json()
+          return data.map((sub) => ({ ...sub, category }))
+        }
+        return []
+      })
+
+      const subcategoriesArrays = await Promise.all(subcategoriesPromises)
+      const allSubcategories = subcategoriesArrays.flat()
+      setSubcategories(allSubcategories)
     } catch (err: any) {
-      console.error("Error al cargar categorías:", err)
-      setError(`Error al cargar categorías: ${err.message}`)
+      console.error("Error al cargar datos:", err)
+      setError(`Error al cargar datos: ${err.message}`)
       setCategories([])
+      setSubcategories([])
     } finally {
       setIsLoading(false)
     }
   }
 
-  const filteredCategories = categories.filter(
-    (category) =>
-      category.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      category.description.toLowerCase().includes(searchTerm.toLowerCase()),
-  )
+  const filteredSubcategories = subcategories.filter((subcategory) => {
+    const matchesSearch =
+      subcategory.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      subcategory.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      subcategory.category?.name.toLowerCase().includes(searchTerm.toLowerCase())
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const matchesCategory = filterCategoryId === 0 || subcategory.categoryId === filterCategoryId
+
+    return matchesSearch && matchesCategory
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
     const checked = (e.target as HTMLInputElement).checked
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : type === "number" || name === "categoryId" ? Number(value) : value,
     }))
   }
 
   const handleAddNew = () => {
-    setCurrentCategory(null)
-    setFormData({ name: "", description: "", isActive: true })
+    setCurrentSubcategory(null)
+    setFormData({
+      name: "",
+      description: "",
+      categoryId: categories.length > 0 ? categories[0].id : 0,
+      isActive: true,
+    })
     setIsEditing(true)
     setError("")
   }
 
-  const handleEdit = (category: Category) => {
-    setCurrentCategory(category)
+  const handleEdit = (subcategory: Subcategory) => {
+    setCurrentSubcategory(subcategory)
     setFormData({
-      name: category.name,
-      description: category.description || "",
-      isActive: category.isActive,
+      name: subcategory.name,
+      description: subcategory.description || "",
+      categoryId: subcategory.categoryId,
+      isActive: subcategory.isActive,
     })
     setIsEditing(true)
     setError("")
   }
 
   const handleDelete = async (id: number) => {
-    if (!window.confirm("¿Estás seguro de que deseas eliminar esta categoría?")) {
+    if (!window.confirm("¿Estás seguro de que deseas eliminar esta subcategoría?")) {
       return
     }
 
@@ -115,7 +165,7 @@ export default function CategoriasPage() {
         throw new Error("No se encontró el token de acceso")
       }
 
-      const response = await fetch(`${API_BASE_URL}/catalog/categories/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/catalog/categories/subcategories/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -124,13 +174,13 @@ export default function CategoriasPage() {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ message: "Error al eliminar" }))
-        throw new Error(errorData.message || `Error al eliminar categoría: ${response.status}`)
+        throw new Error(errorData.message || `Error al eliminar subcategoría: ${response.status}`)
       }
 
-      await fetchCategories()
+      await fetchData()
     } catch (err: any) {
-      console.error("Error al eliminar categoría:", err)
-      setError(err.message || "Error al eliminar categoría")
+      console.error("Error al eliminar subcategoría:", err)
+      setError(err.message || "Error al eliminar subcategoría")
     } finally {
       setIsSubmitting(false)
     }
@@ -142,7 +192,13 @@ export default function CategoriasPage() {
     setError("")
 
     if (!formData.name.trim()) {
-      setError("El nombre de la categoría es obligatorio")
+      setError("El nombre de la subcategoría es obligatorio")
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!formData.categoryId || formData.categoryId === 0) {
+      setError("Debes seleccionar una categoría")
       setIsSubmitting(false)
       return
     }
@@ -153,8 +209,8 @@ export default function CategoriasPage() {
         throw new Error("No se encontró el token de acceso")
       }
 
-      if (currentCategory) {
-        const response = await fetch(`${API_BASE_URL}/catalog/categories/${currentCategory.id}`, {
+      if (currentSubcategory) {
+        const response = await fetch(`${API_BASE_URL}/catalog/categories/subcategories/${currentSubcategory.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -163,16 +219,17 @@ export default function CategoriasPage() {
           body: JSON.stringify({
             name: formData.name,
             description: formData.description,
+            categoryId: formData.categoryId,
             isActive: formData.isActive,
           }),
         })
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({ message: "Error al actualizar" }))
-          throw new Error(errorData.message || `Error al actualizar categoría: ${response.status}`)
+          throw new Error(errorData.message || `Error al actualizar subcategoría: ${response.status}`)
         }
       } else {
-        const response = await fetch(`${API_BASE_URL}/catalog/categories`, {
+        const response = await fetch(`${API_BASE_URL}/catalog/categories/subcategories`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -181,23 +238,29 @@ export default function CategoriasPage() {
           body: JSON.stringify({
             name: formData.name,
             description: formData.description,
+            categoryId: formData.categoryId,
             isActive: formData.isActive,
           }),
         })
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({ message: "Error al crear" }))
-          throw new Error(errorData.message || `Error al crear categoría: ${response.status}`)
+          throw new Error(errorData.message || `Error al crear subcategoría: ${response.status}`)
         }
       }
 
       setIsEditing(false)
-      setCurrentCategory(null)
-      setFormData({ name: "", description: "", isActive: true })
-      await fetchCategories()
+      setCurrentSubcategory(null)
+      setFormData({
+        name: "",
+        description: "",
+        categoryId: categories.length > 0 ? categories[0].id : 0,
+        isActive: true,
+      })
+      await fetchData()
     } catch (err: any) {
-      console.error("Error al guardar categoría:", err)
-      setError(err.message || "Error al guardar categoría")
+      console.error("Error al guardar subcategoría:", err)
+      setError(err.message || "Error al guardar subcategoría")
     } finally {
       setIsSubmitting(false)
     }
@@ -208,17 +271,25 @@ export default function CategoriasPage() {
       <div className="space-y-6">
         <div className="flex items-center gap-2 px-4 py-2 justify-between">
           <div>
-            <h1 className="text-3xl font-bold">Categorías</h1>
-            <p className="text-muted-foreground">Gestiona las categorías de productos</p>
+            <h1 className="text-3xl font-bold">Subcategorías</h1>
+            <p className="text-muted-foreground">Gestiona las subcategorías de productos</p>
           </div>
           <button
             onClick={handleAddNew}
-            className="flex items-center gap-2 px-4 py-2 bg-[#e41e26] text-white rounded-lg hover:bg-[#c41820] transition-colors"
+            disabled={categories.length === 0}
+            className="flex items-center gap-2 px-4 py-2 bg-[#e41e26] text-white rounded-lg hover:bg-[#c41820] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Plus className="w-5 h-5" />
-            Nueva Categoría
+            Nueva Subcategoría
           </button>
         </div>
+
+        {categories.length === 0 && !isLoading && (
+          <div className="flex items-center gap-2 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-yellow-800">
+            <AlertCircle className="w-5 h-5" />
+            <span>Primero debes crear categorías antes de agregar subcategorías.</span>
+          </div>
+        )}
 
         {error && (
           <div className="flex items-center gap-2 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
@@ -229,8 +300,30 @@ export default function CategoriasPage() {
 
         {isEditing && (
           <div className="p-6 bg-white border rounded-lg shadow-sm">
-            <h2 className="text-xl font-semibold mb-4">{currentCategory ? "Editar Categoría" : "Nueva Categoría"}</h2>
+            <h2 className="text-xl font-semibold mb-4">
+              {currentSubcategory ? "Editar Subcategoría" : "Nueva Subcategoría"}
+            </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="categoryId" className="block text-sm font-medium mb-2">
+                  Categoría
+                </label>
+                <select
+                  id="categoryId"
+                  name="categoryId"
+                  value={formData.categoryId}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e41e26]"
+                  required
+                >
+                  <option value={0}>Selecciona una categoría</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Nombre
@@ -290,8 +383,13 @@ export default function CategoriasPage() {
                   type="button"
                   onClick={() => {
                     setIsEditing(false)
-                    setCurrentCategory(null)
-                    setFormData({ name: "", description: "", isActive: true })
+                    setCurrentSubcategory(null)
+                    setFormData({
+                      name: "",
+                      description: "",
+                      categoryId: categories.length > 0 ? categories[0].id : 0,
+                      isActive: true,
+                    })
                     setError("")
                   }}
                   className="px-4 py-2 border rounded-lg hover:bg-gray-50 transition-colors"
@@ -304,28 +402,40 @@ export default function CategoriasPage() {
         )}
 
         <div className="bg-white border rounded-lg p-4">
-          <div className="mb-4">
-            <div className="relative">
+          <div className="mb-4 flex gap-4">
+            <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Buscar categorías..."
+                placeholder="Buscar subcategorías..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e41e26]"
               />
             </div>
+            <select
+              value={filterCategoryId}
+              onChange={(e) => setFilterCategoryId(Number(e.target.value))}
+              className="px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e41e26]"
+            >
+              <option value={0}>Todas las categorías</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           {isLoading ? (
             <div className="flex items-center justify-center py-12">
               <Loader2 className="w-8 h-8 animate-spin text-[#e41e26]" />
             </div>
-          ) : filteredCategories.length === 0 ? (
+          ) : filteredSubcategories.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
-              {searchTerm
-                ? "No se encontraron categorías con ese término de búsqueda"
-                : "No hay categorías registradas"}
+              {searchTerm || filterCategoryId
+                ? "No se encontraron subcategorías con esos filtros"
+                : "No hay subcategorías registradas"}
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -333,38 +443,42 @@ export default function CategoriasPage() {
                 <thead>
                   <tr className="border-b">
                     <th className="text-left p-3 font-semibold">Nombre</th>
+                    <th className="text-left p-3 font-semibold">Categoría</th>
                     <th className="text-left p-3 font-semibold">Descripción</th>
                     <th className="text-left p-3 font-semibold">Estado</th>
-                    <th className="text-left p-3 font-semibold">Fecha Creación</th>
                     <th className="text-right p-3 font-semibold">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredCategories.map((category) => (
-                    <tr key={category.id} className="border-b hover:bg-gray-50">
-                      <td className="p-3">{category.name}</td>
-                      <td className="p-3">{category.description || "-"}</td>
+                  {filteredSubcategories.map((subcategory) => (
+                    <tr key={subcategory.id} className="border-b hover:bg-gray-50">
+                      <td className="p-3">{subcategory.name}</td>
+                      <td className="p-3">
+                        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                          {subcategory.category?.name || "Sin categoría"}
+                        </span>
+                      </td>
+                      <td className="p-3">{subcategory.description || "-"}</td>
                       <td className="p-3">
                         <span
                           className={`px-2 py-1 rounded-full text-xs ${
-                            category.isActive ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
+                            subcategory.isActive ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
                           }`}
                         >
-                          {category.isActive ? "Activa" : "Inactiva"}
+                          {subcategory.isActive ? "Activa" : "Inactiva"}
                         </span>
                       </td>
-                      <td className="p-3">{new Date(category.createdAt).toLocaleDateString()}</td>
                       <td className="p-3">
                         <div className="flex items-center justify-end gap-2">
                           <button
-                            onClick={() => handleEdit(category)}
+                            onClick={() => handleEdit(subcategory)}
                             className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                             title="Editar"
                           >
                             <Edit className="w-4 h-4" />
                           </button>
                           <button
-                            onClick={() => handleDelete(category.id)}
+                            onClick={() => handleDelete(subcategory.id)}
                             className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                             title="Eliminar"
                             disabled={isSubmitting}
