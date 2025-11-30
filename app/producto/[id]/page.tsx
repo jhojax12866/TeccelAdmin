@@ -3,109 +3,76 @@
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Star, ShoppingCart, Heart, ChevronRight, Check, Phone, Cpu, Battery, Wifi, Bluetooth } from 'lucide-react';
+import { ShoppingCart, ChevronRight, Check, Tag } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
+import { productService } from "@/lib/api/services/product.service";
+import type { Product } from "@/lib/api/types"; // Tu tipo actualizado
 
-// Import the product data
-import productsData from "@/public/data/products.json"
-
-// Define the Product type based on the JSON structure
-type Color = {
-  name: string;
-  code: string;
-};
-
-type Specifications = {
-  display: {
-    type: string;
-    size: string;
-    resolution: string;
-    refresh_rate: string;
-  };
-  processor: {
-    chipset: string;
-    cores: string;
-    gpu: string;
-  };
-  camera: {
-    main: string;
-    ultrawide?: string;
-    macro?: string;
-    depth?: string;
-    front: string;
-  };
-  battery: {
-    capacity: string;
-    charging: string;
-  };
-  connectivity: {
-    wifi: string;
-    bluetooth: string;
-    nfc: boolean;
-    usb: string;
-  };
-  dimensions: string;
-  weight: string;
-  os: string;
-  additional_features: {
-    fingerprint: string;
-    waterproof: string;
-    headphone_jack: boolean;
-    stereo_speakers?: boolean;
-    dolby_atmos?: boolean;
-    knox_security?: boolean;
-  };
-};
-
-type Product = {
-  id: string;
-  brand: string;
-  model: string;
-  storage: string;
-  ram: string;
-  price: number;
-  image: string;
-  featured: boolean;
-  colors: Color[];
-  specifications: Specifications;
-};
+// Interfaz auxiliar para agrupar atributos en la vista
+interface GroupedAttributes {
+  groupName: string;
+  attributes: { name: string; value: string }[];
+}
 
 export default function ProductPage() {
   const params = useParams();
-  const id = params.id as string;
+  const id = Number(params.id);
+  
   const [product, setProduct] = useState<Product | null>(null);
-  const [selectedColor, setSelectedColor] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
+  const [groupedSpecs, setGroupedSpecs] = useState<GroupedAttributes[]>([]);
+  const [selectedImage, setSelectedImage] = useState<string>("");
 
   useEffect(() => {
-    // Find the product with the matching ID
-    const foundProduct = productsData.find(p => p.id === id);
-    if (foundProduct) {
-      const transformedProduct = {
-        ...foundProduct,
-        colors: foundProduct.colors.map(color => ({
-          name: color.name,
-          code: 'code' in color ? color.code : color.hex,
-        })),
-        specifications: {
-          ...foundProduct.specifications,
-          connectivity: {
-            ...foundProduct.specifications.connectivity,
-            nfc: foundProduct.specifications.connectivity.nfc ?? false,
-          },
-          weight: foundProduct.specifications.weight ?? "N/A",
-        },
-      };
-      setProduct(transformedProduct);
-      setSelectedColor(transformedProduct.colors[0].name);
-    }
-    setIsLoading(false);
+    const loadProduct = async () => {
+      try {
+        if (!id) return;
+        const data = await productService.getProductById(id);
+        setProduct(data);
+        
+        // Configurar imagen principal inicial
+        if (data.images && data.images.length > 0) {
+            setSelectedImage(data.images[0].imageUrl);
+        }
+
+        // --- LÓGICA DE AGRUPACIÓN DE ESPECIFICACIONES ---
+        // Transformamos el array plano 'attributeValues' en grupos ordenados
+        if ((data as any).attributeValues) {
+            const rawAttrs = (data as any).attributeValues;
+            const groupsMap = new Map<string, { name: string; value: string }[]>();
+
+            rawAttrs.forEach((av: any) => {
+                const groupName = av.attribute?.attributeGroup?.name || "Otros";
+                const attrName = av.attribute?.name || "Característica";
+                const value = av.value;
+
+                if (!groupsMap.has(groupName)) {
+                    groupsMap.set(groupName, []);
+                }
+                groupsMap.get(groupName)?.push({ name: attrName, value });
+            });
+
+            // Convertimos el Map a Array
+            const specsArray: GroupedAttributes[] = Array.from(groupsMap.entries()).map(([name, attrs]) => ({
+                groupName: name,
+                attributes: attrs
+            }));
+            
+            setGroupedSpecs(specsArray);
+        }
+
+      } catch (error) {
+        console.error("Error cargando producto:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadProduct();
   }, [id]);
 
   const formatPrice = (price: number) => {
@@ -118,18 +85,18 @@ export default function ProductPage() {
 
   const handleWhatsAppBuy = () => {
     if (!product) return;
-    
     const message = encodeURIComponent(
-      `Hola, estoy interesado en comprar el ${product.brand} ${product.model} (${product.storage}/${product.ram}) en color ${selectedColor}. ¿Está disponible?`
+      `Hola, estoy interesado en comprar el ${product.name} (Código: ${product.code}). ¿Está disponible?`
     );
-    const productUrl = encodeURIComponent(`${process.env.NEXT_PUBLIC_BASE_URL}/producto/${product.id}`);
+    // Asegúrate de definir tu URL base en .env
+    const productUrl = window.location.href; 
     window.open(`https://wa.me/+573229004323?text=${message} ${productUrl}`, '_blank');
   };
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#e41e26]"></div>
       </div>
     );
   }
@@ -138,8 +105,7 @@ export default function ProductPage() {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
         <h1 className="text-3xl font-bold mb-4">Producto no encontrado</h1>
-        <p className="mb-8">Lo sentimos, el producto que estás buscando no existe.</p>
-        <Button asChild>
+        <Button asChild className="bg-[#e41e26] hover:bg-[#c41a21]">
           <a href="/">Volver a la tienda</a>
         </Button>
       </div>
@@ -150,109 +116,107 @@ export default function ProductPage() {
     <div className="container mx-auto px-4 py-8">
       {/* Breadcrumb */}
       <div className="flex items-center text-sm text-muted-foreground mb-6">
-        <a href="/" className="hover:text-primary transition-colors">Inicio</a>
+        <a href="/" className="hover:text-[#e41e26] transition-colors">Inicio</a>
         <ChevronRight className="h-4 w-4 mx-2" />
-        <a href={`/marca/${product.brand.toLowerCase()}`} className="hover:text-primary transition-colors">{product.brand}</a>
+        <a href="/productos" className="hover:text-[#e41e26] transition-colors">Catálogo</a>
         <ChevronRight className="h-4 w-4 mx-2" />
-        <span className="text-foreground font-medium">{product.model}</span>
+        <span className="text-foreground font-medium truncate max-w-[200px]">{product.name}</span>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-        {/* Product Image */}
-        <div className="flex flex-col items-center">
-          <div className="relative w-full max-w-md aspect-square mb-4 bg-white rounded-xl p-8 border shadow-sm">
+        
+        {/* GALERÍA DE IMÁGENES */}
+        <div className="flex flex-col gap-4">
+          {/* Imagen Principal */}
+          <div className="relative w-full aspect-square bg-white rounded-xl border shadow-sm overflow-hidden flex items-center justify-center p-6">
             <Image
-              src={product.image || "/placeholder.svg?height=500&width=500"}
-              alt={`${product.brand} ${product.model}`}
+              src={selectedImage || "/placeholder.svg"}
+              alt={product.name}
               fill
-              className="object-contain p-4"
+              className="object-contain"
               priority
             />
-            {product.featured && (
-              <Badge className="absolute top-4 left-4 bg-primary text-white">Destacado</Badge>
+            {!product.isActive && (
+                <div className="absolute top-4 left-4 bg-gray-800 text-white px-3 py-1 rounded text-xs">Agotado / Inactivo</div>
+            )}
+            {product.priceDiscount && (
+                <Badge className="absolute top-4 right-4 bg-[#e41e26] text-white">Oferta</Badge>
             )}
           </div>
+
+          {/* Miniaturas (Solo si hay más de una) */}
+          {product.images && product.images.length > 1 && (
+            <div className="flex gap-2 overflow-x-auto pb-2">
+                {product.images.map((img, idx) => (
+                    <button 
+                        key={img.id} 
+                        onClick={() => setSelectedImage(img.imageUrl)}
+                        className={`relative w-20 h-20 flex-shrink-0 border rounded-lg overflow-hidden bg-white ${selectedImage === img.imageUrl ? 'ring-2 ring-[#e41e26]' : 'hover:border-gray-400'}`}
+                    >
+                        <Image src={img.imageUrl} alt={`Vista ${idx}`} fill className="object-contain p-1"/>
+                    </button>
+                ))}
+            </div>
+          )}
         </div>
 
-        {/* Product Details */}
+        {/* DETALLES DEL PRODUCTO */}
         <div className="flex flex-col">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold mb-2">{product.brand} {product.model}</h1>
-           
+            <h1 className="text-3xl font-bold mb-2 text-gray-900">{product.name}</h1>
+            <p className="text-sm text-gray-500 mb-4">SKU: {product.code}</p>
             
+            {/* Precios */}
             <div className="flex items-baseline gap-4 mb-6">
-              <span className="text-3xl font-bold text-primary">{formatPrice(product.price)}</span>
-              <span className="text-sm text-muted-foreground line-through">{formatPrice(product.price * 1.2)}</span>
+              {product.priceDiscount ? (
+                  <>
+                    <span className="text-3xl font-bold text-[#e41e26]">{formatPrice(product.priceDiscount)}</span>
+                    <span className="text-lg text-gray-400 line-through">{formatPrice(product.price)}</span>
+                  </>
+              ) : (
+                  <span className="text-3xl font-bold text-gray-900">{formatPrice(product.price)}</span>
+              )}
             </div>
 
-            <div className="grid gap-4 mb-6">
-              <div>
-                <h3 className="font-medium mb-2">Almacenamiento: <span className="font-bold">{product.storage}</span></h3>
-                <h3 className="font-medium mb-2">Memoria RAM: <span className="font-bold">{product.ram}</span></h3>
-              </div>
-               {/* Proximamente 
-              <div>
-                <h3 className="font-medium mb-3">Color:</h3>
-                <RadioGroup 
-                  value={selectedColor} 
-                  onValueChange={setSelectedColor}
-                  className="flex flex-wrap gap-3"
-                >
-                  {product.colors.map((color) => (
-                    <div key={color.name} className="flex flex-col items-center gap-1">
-                      <Label
-                        htmlFor={`color-${color.name}`}
-                        className="cursor-pointer flex flex-col items-center gap-1"
-                      >
-                        <div 
-                          className="w-8 h-8 rounded-full border-2 flex items-center justify-center"
-                          style={{ backgroundColor: color.code || color.code, borderColor: selectedColor === color.name ? '#000' : 'transparent' }}
-                        >
-                          {selectedColor === color.name && <Check className="h-4 w-4 text-white" />}
-                        </div>
-                        <RadioGroupItem 
-                          id={`color-${color.name}`} 
-                          value={color.name} 
-                          className="sr-only" 
-                        />
-                        <span className="text-xs">{color.name}</span>
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-              </div>*/}
-            </div>
+            {/* Descripción Corta */}
+            {product.description && (
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                    {product.description}
+                </p>
+            )}
 
+            {/* Botones de Acción */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Button 
                 size="lg" 
-                className="flex-1 gap-2"
+                className="flex-1 gap-2 bg-[#e41e26] hover:bg-[#c41a21] text-white"
                 onClick={handleWhatsAppBuy}
+                disabled={!product.isActive || product.stock <= 0}
               >
                 <ShoppingCart className="h-5 w-5" />
-                Comprar Ahora
+                {product.stock > 0 ? "Comprar por WhatsApp" : "Agotado"}
               </Button>
-              
             </div>
 
-            <Card className="bg-muted/50">
+            {/* Beneficios / Garantía */}
+            <Card className="bg-gray-50 border-none shadow-sm">
               <CardContent className="p-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center gap-2">
                     <Check className="h-5 w-5 text-green-600" />
-                    <span className="text-sm">Envío Gratis</span>
+                    <span className="text-sm text-gray-700">Envío Seguro</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Check className="h-5 w-5 text-green-600" />
-                    <span className="text-sm">Garantía 12 meses</span>
+                    <span className="text-sm text-gray-700">Garantía Directa</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Check className="h-5 w-5 text-green-600" />
-                    <span className="text-sm">Pago Seguro</span>
+                    <span className="text-sm text-gray-700">Soporte 24/7</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Check className="h-5 w-5 text-green-600" />
-                    <span className="text-sm">Soporte 24/7</span>
+                    <span className="text-sm text-gray-700">Original 100%</span>
                   </div>
                 </div>
               </CardContent>
@@ -261,219 +225,48 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {/* Product Specifications */}
-      <div className="mt-12">
+      {/* PESTAÑAS DE ESPECIFICACIONES DINÁMICAS */}
+      <div className="mt-16">
         <Tabs defaultValue="specifications">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="specifications">Especificaciones</TabsTrigger>
-            <TabsTrigger value="features">Características</TabsTrigger>
-            <TabsTrigger value="reviews">Reseñas</TabsTrigger>
+          <TabsList className="w-full justify-start border-b rounded-none bg-transparent p-0 h-auto">
+            <TabsTrigger 
+                value="specifications"
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#e41e26] data-[state=active]:bg-transparent data-[state=active]:text-[#e41e26] px-6 py-3"
+            >
+                Especificaciones Técnicas
+            </TabsTrigger>
           </TabsList>
-          <TabsContent value="specifications" className="mt-6">
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Phone className="h-5 w-5" />
-                    Pantalla
-                  </h3>
-                  <div className="grid gap-3">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Tipo</span>
-                      <span className="font-medium">{product.specifications.display.type}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Tamaño</span>
-                      <span className="font-medium">{product.specifications.display.size}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Resolución</span>
-                      <span className="font-medium">{product.specifications.display.resolution}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Tasa de refresco</span>
-                      <span className="font-medium">{product.specifications.display.refresh_rate}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Cpu className="h-5 w-5" />
-                    Procesador
-                  </h3>
-                  <div className="grid gap-3">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Chipset</span>
-                      <span className="font-medium">{product.specifications.processor.chipset}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Núcleos</span>
-                      <span className="font-medium">{product.specifications.processor.cores}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">GPU</span>
-                      <span className="font-medium">{product.specifications.processor.gpu}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Battery className="h-5 w-5" />
-                    Batería
-                  </h3>
-                  <div className="grid gap-3">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Capacidad</span>
-                      <span className="font-medium">{product.specifications.battery.capacity}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Carga</span>
-                      <span className="font-medium">{product.specifications.battery.charging}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Wifi className="h-5 w-5" />
-                    Conectividad
-                  </h3>
-                  <div className="grid gap-3">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">WiFi</span>
-                      <span className="font-medium">{product.specifications.connectivity.wifi}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Bluetooth</span>
-                      <span className="font-medium">{product.specifications.connectivity.bluetooth}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">NFC</span>
-                      <span className="font-medium">{product.specifications.connectivity.nfc ? 'Sí' : 'No'}</span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">USB</span>
-                      <span className="font-medium">{product.specifications.connectivity.usb}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
           
-          <TabsContent value="features" className="mt-6">
-            <Card>
-              <CardContent className="p-6">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Cámara</h3>
-                    <div className="grid gap-3">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Principal</span>
-                        <span className="font-medium">{product.specifications.camera.main}</span>
-                      </div>
-                      <Separator />
-                      {product.specifications.camera.ultrawide && (
-                        <>
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Ultra gran angular</span>
-                            <span className="font-medium">{product.specifications.camera.ultrawide}</span>
-                          </div>
-                          <Separator />
-                        </>
-                      )}
-                      {product.specifications.camera.macro && (
-                        <>
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Macro</span>
-                            <span className="font-medium">{product.specifications.camera.macro}</span>
-                          </div>
-                          <Separator />
-                        </>
-                      )}
-                      {product.specifications.camera.depth && (
-                        <>
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Profundidad</span>
-                            <span className="font-medium">{product.specifications.camera.depth}</span>
-                          </div>
-                          <Separator />
-                        </>
-                      )}
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Frontal</span>
-                        <span className="font-medium">{product.specifications.camera.front}</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Características adicionales</h3>
-                    <div className="grid gap-3">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Sensor de huellas</span>
-                        <span className="font-medium">{product.specifications.additional_features.fingerprint}</span>
-                      </div>
-                      <Separator />
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Resistencia al agua</span>
-                        <span className="font-medium">{product.specifications.additional_features.waterproof}</span>
-                      </div>
-                      <Separator />
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Conector de auriculares</span>
-                        <span className="font-medium">{product.specifications.additional_features.headphone_jack ? 'Sí' : 'No'}</span>
-                      </div>
-                      {product.specifications.additional_features.stereo_speakers !== undefined && (
-                        <>
-                          <Separator />
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Altavoces estéreo</span>
-                            <span className="font-medium">{product.specifications.additional_features.stereo_speakers ? 'Sí' : 'No'}</span>
-                          </div>
-                        </>
-                      )}
-                      {product.specifications.additional_features.dolby_atmos !== undefined && (
-                        <>
-                          <Separator />
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Dolby Atmos</span>
-                            <span className="font-medium">{product.specifications.additional_features.dolby_atmos ? 'Sí' : 'No'}</span>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
+          <TabsContent value="specifications" className="mt-8">
+            {groupedSpecs.length > 0 ? (
+                <div className="grid md:grid-cols-2 gap-6">
+                    {/* Renderizamos cada grupo como una tarjeta */}
+                    {groupedSpecs.map((group, index) => (
+                        <Card key={index} className="overflow-hidden border shadow-sm">
+                            <div className="bg-gray-50 px-6 py-3 border-b">
+                                <h3 className="font-semibold text-gray-800 flex items-center gap-2">
+                                    <Tag className="h-4 w-4 text-[#e41e26]" />
+                                    {group.groupName}
+                                </h3>
+                            </div>
+                            <CardContent className="p-0">
+                                <div className="divide-y">
+                                    {group.attributes.map((attr, idx) => (
+                                        <div key={idx} className="flex justify-between px-6 py-3 hover:bg-gray-50/50">
+                                            <span className="text-sm text-gray-500 font-medium">{attr.name}</span>
+                                            <span className="text-sm text-gray-900 font-semibold text-right">{attr.value}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </CardContent>
+                        </Card>
+                    ))}
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          
-          <TabsContent value="reviews" className="mt-6">
-            <Card>
-              <CardContent className="p-6 text-center">
-                <h3 className="text-lg font-semibold mb-2">Reseñas de clientes</h3>
-                <p className="text-muted-foreground mb-4">Aún no hay reseñas para este producto.</p>
-                <Button>Escribir una reseña</Button>
-              </CardContent>
-            </Card>
+            ) : (
+                <div className="text-center py-10 text-gray-500 bg-gray-50 rounded-lg">
+                    No hay especificaciones técnicas detalladas para este producto.
+                </div>
+            )}
           </TabsContent>
         </Tabs>
       </div>
